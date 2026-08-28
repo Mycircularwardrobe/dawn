@@ -18,18 +18,22 @@
 
 {%- if show_breadcrumbs -%}
   {%- liquid
-    # Work out the parent collection for a product page.
+    # The middle crumb on a product page links to the product's garment category.
+    # Only these collection handles are treated as categories — promo/seasonal
+    # collections (sale, 10% off, edits, size collections) are deliberately excluded.
+    # Add or remove handles here if the category structure changes.
+    assign category_handles = 'dresses,tops-1,knitwear,bags,shoes,coats-and-jackets,trousers,shorts,skirts,jumpsuits-playsuits,loungewear' | split: ','
     assign crumb_collection = false
+
     if request.page_type == 'product'
-      if collection.url
+      if collection.url and category_handles contains collection.handle
         assign crumb_collection = collection
       else
         for c in product.collections
-          if c.handle == 'all' or c.handle == 'frontpage' or c.handle == 'new-in'
-            continue
+          if category_handles contains c.handle
+            assign crumb_collection = c
+            break
           endif
-          assign crumb_collection = c
-          break
         endfor
       endif
     endif
