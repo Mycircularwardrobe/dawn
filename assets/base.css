@@ -3676,5 +3676,5 @@ details-disclosure > details {
 }
 
 .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover {
-  --color-button: 239 183 194;
+  --color-button: 239, 183, 194;
 }
