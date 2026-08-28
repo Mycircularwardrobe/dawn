@@ -1,14 +1,1 @@
-{
-  "sections": {
-    "main": {
-      "type": "main-page",
-      "settings": {
-        "padding_top": 28,
-        "padding_bottom": 28
-      }
-    }
-  },
-  "order": [
-    "main"
-  ]
-}
+{"sections":{"main":{"type":"main-page","disabled":true,"settings":{"padding_top":24,"padding_bottom":0}},"rich_text_dki6Ug":{"type":"rich-text","name":"t:sections.rich-text.presets.name","settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"","full_width":true,"padding_top":40,"padding_bottom":52}},"contact_form_df7zRy":{"type":"contact-form","name":"t:sections.contact-form.presets.name","settings":{"heading":"Contact form","heading_size":"h1","color_scheme":"scheme-4","padding_top":36,"padding_bottom":36}},"newsletter_8YNUeW":{"type":"newsletter","blocks":{"heading_4cgW6H":{"type":"heading","settings":{"heading":"","heading_size":"h1"}},"paragraph_NFiUbJ":{"type":"paragraph","settings":{"text":"<p>Be the first to know about new collections and exclusive offers.<\/p>"}},"email_form_t3KLNp":{"type":"email_form","settings":{}}},"block_order":["heading_4cgW6H","paragraph_NFiUbJ","email_form_t3KLNp"],"name":"t:sections.newsletter.presets.name","settings":{"color_scheme":"","full_width":true,"padding_top":8,"padding_bottom":52}}},"order":["main","rich_text_dki6Ug","contact_form_df7zRy","newsletter_8YNUeW"]}

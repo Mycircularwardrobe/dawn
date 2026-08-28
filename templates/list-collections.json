@@ -1,17 +1,1 @@
-{
-  "sections": {
-    "main": {
-      "type": "main-list-collections",
-      "settings": {
-        "title": "Collections",
-        "sort": "alphabetical",
-        "image_ratio": "square",
-        "columns_desktop": 3,
-        "columns_mobile": "2"
-      }
-    }
-  },
-  "order": [
-    "main"
-  ]
-}
+{"sections":{"main":{"type":"main-list-collections","disabled":true,"settings":{"title":"Womenswear","sort":"date_reversed","image_ratio":"portrait","columns_desktop":6,"columns_mobile":"2"}},"featured_collection_aP4qzJ":{"type":"featured-collection","settings":{"title":"Shop our Latest","heading_size":"h2","description":"<p>Discover our most recently uploaded secondhand collection of premium and luxury womenswear clothing and accessories.<\/p>","show_description":false,"description_style":"body","collection":"new-in","products_to_show":25,"columns_desktop":4,"full_width":false,"show_view_all":true,"view_all_style":"solid","enable_desktop_slider":false,"color_scheme":"scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f","image_ratio":"adapt","image_shape":"default","show_secondary_image":true,"show_vendor":false,"show_rating":false,"quick_add":"none","columns_mobile":"2","swipe_on_mobile":false,"padding_top":36,"padding_bottom":36}}},"order":["main","featured_collection_aP4qzJ"]}

@@ -280,8 +280,7 @@
                           show_vendor: section.settings.show_vendor,
                           show_rating: section.settings.show_rating,
                           lazy_load: lazy_load,
-                          skip_styles: skip_card_product_styles,
-                          product_view_context: 'search'
+                          skip_styles: skip_card_product_styles
                         %}
                         {%- assign skip_card_product_styles = true -%}
                       {%- when 'article' -%}
@@ -350,22 +349,6 @@
       "label": "t:sections.main-search.settings.columns_desktop.label"
     },
     {
-      "type": "select",
-      "id": "columns_mobile",
-      "default": "2",
-      "label": "t:sections.main-search.settings.columns_mobile.label",
-      "options": [
-        {
-          "value": "1",
-          "label": "t:sections.main-search.settings.columns_mobile.options__1.label"
-        },
-        {
-          "value": "2",
-          "label": "t:sections.main-search.settings.columns_mobile.options__2.label"
-        }
-      ]
-    },    
-    {
       "type": "header",
       "content": "t:sections.main-search.settings.header__1.content"
     },
@@ -427,7 +410,8 @@
         }
       ],
       "default": "default",
-      "label": "t:sections.all.image_shape.label"
+      "label": "t:sections.all.image_shape.label",
+      "info": "t:sections.all.image_shape.info"
     },
     {
       "type": "checkbox",
@@ -477,7 +461,8 @@
         }
       ],
       "default": "horizontal",
-      "label": "t:sections.main-collection-product-grid.settings.filter_type.label"
+      "label": "t:sections.main-collection-product-grid.settings.filter_type.label",
+      "info": "t:sections.main-collection-product-grid.settings.filter_type.info"
     },
     {
       "type": "checkbox",
@@ -487,7 +472,8 @@
     },
     {
       "type": "header",
-      "content": "t:sections.main-search.settings.header__2.content"
+      "content": "t:sections.main-search.settings.header__2.content",
+      "info": "t:sections.main-search.settings.header__2.info"
     },
     {
       "type": "checkbox",
@@ -500,6 +486,26 @@
       "id": "article_show_author",
       "default": false,
       "label": "t:sections.main-search.settings.article_show_author.label"
+    },
+    {
+      "type": "header",
+      "content": "t:sections.main-search.settings.header_mobile.content"
+    },
+    {
+      "type": "select",
+      "id": "columns_mobile",
+      "default": "2",
+      "label": "t:sections.main-search.settings.columns_mobile.label",
+      "options": [
+        {
+          "value": "1",
+          "label": "t:sections.main-search.settings.columns_mobile.options__1.label"
+        },
+        {
+          "value": "2",
+          "label": "t:sections.main-search.settings.columns_mobile.options__2.label"
+        }
+      ]
     },
     {
       "type": "header",
