@@ -3663,3 +3663,18 @@ details-disclosure > details {
   border-color: #e6c5c5 !important;
   color: #a53d3d !important;
 }
+
+/* ---------------------------------------------------------------------------
+   MCW: primary (green) buttons fade to the theme soft pink on hover (2026-08-28)
+   #efb7c2 is the theme's soft pink (the pink used in colour scheme 2). Only the
+   solid buttons change; outline / text buttons are left alone. Label colour is
+   unchanged (near-white), matching how the theme pairs text with this pink.
+   --------------------------------------------------------------------------- */
+.button:not(.button--secondary):not(.button--tertiary):not([disabled]) {
+  transition: box-shadow var(--duration-short) ease,
+    background-color var(--duration-short) ease;
+}
+
+.button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover {
+  --color-button: 239 183 194;
+}
