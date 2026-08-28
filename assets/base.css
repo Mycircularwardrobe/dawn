@@ -3644,3 +3644,22 @@ details-disclosure > details {
 
 
 
+
+/* ---------------------------------------------------------------------------
+   MCW: custom Sold out / Sale badge colours (2026-08-28)
+   Sold out = soft grey, Sale = soft red. Overrides the theme colour scheme
+   applied to these badges. Adjust the hex values below to taste.
+   --------------------------------------------------------------------------- */
+.badge.badge--sold-out,
+.price .badge.price__badge-sold-out {
+  background-color: #ededed !important;
+  border-color: #dcdcdc !important;
+  color: #5c5c5c !important;
+}
+
+.badge.badge--sale,
+.price .badge.price__badge-sale {
+  background-color: #f4dcdc !important;
+  border-color: #e6c5c5 !important;
+  color: #a53d3d !important;
+}
