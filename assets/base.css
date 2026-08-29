@@ -3665,18 +3665,26 @@ details-disclosure > details {
 }
 
 /* ---------------------------------------------------------------------------
-   MCW: primary (green) buttons fade to the theme soft pink on hover (2026-08-28)
-   #efb7c2 is the theme's soft pink (the pink used in colour scheme 2). Only the
-   solid buttons change; outline / text buttons are left alone. Label colour is
-   unchanged (near-white), matching how the theme pairs text with this pink.
+   MCW: green buttons fade to the theme soft pink on hover (2026-08-28)
+   #efb7c2 (239,183,194) is the theme's soft pink, the pink used in colour
+   scheme 2. Scoped to the colour schemes whose button colour is the green
+   #466660 — so white buttons (e.g. on the pink section) are left untouched.
+   If a new green colour scheme is added, add its .color-<id> class here.
+   Label colour is unchanged (near-white), matching how the theme itself
+   pairs text with this pink.
    --------------------------------------------------------------------------- */
 .button:not(.button--secondary):not(.button--tertiary):not([disabled]) {
   transition: box-shadow var(--duration-short) ease,
     background-color var(--duration-short) ease;
 }
 
-.button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover {
+.color-scheme-1 .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover,
+.color-scheme-4 .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover,
+.color-scheme-5 .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover,
+.color-scheme-f2d47c04-02cb-4ef1-b0fd-f469af2a2c16 .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover,
+.color-scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover {
   --color-button: 239, 183, 194;
+  background-color: #efb7c2;
 }
 
 /* ---------------------------------------------------------------------------
