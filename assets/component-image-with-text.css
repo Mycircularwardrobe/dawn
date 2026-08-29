@@ -17,9 +17,26 @@
   overflow: visible;
 }
 
-/* MCW: sage-green frame on the About page images */
+/* MCW: About page images — sage-green frame, and stop them stretching to
+   match the (long) text column, which was blowing the images up. */
+.page-about .image-with-text__media-item {
+  align-self: flex-start;
+}
+
 .page-about .image-with-text__media {
-  border: 3px solid #466660;
+  border: 9px solid #466660;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.page-about .image-with-text__media--adapt {
+  height: 34rem;
+}
+
+@media screen and (min-width: 750px) {
+  .page-about .image-with-text__media--adapt {
+    height: 46rem;
+  }
 }
 
 .image-with-text__media--small {
