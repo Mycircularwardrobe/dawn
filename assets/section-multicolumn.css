@@ -231,3 +231,9 @@
     display: list-item;
   }
 }
+
+/* MCW: sage-green frame on the homepage About / Sell With Us / Refunds images,
+   matching the About page. */
+.template-index .multicolumn-card__image-wrapper .media {
+  border: 9px solid #466660;
+}
