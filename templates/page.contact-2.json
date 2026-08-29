@@ -155,20 +155,11 @@
             "text": "<p>Every item that comes through My Circular Wardrobe is inspected in-house before it's listed. We check hardware, stitching and serial numbers to make sure what you're buying is exactly what it says it is. Thinking of selling with us instead? Our full vetting process is on our Sell With Us page.</p><p></p><p>​</p>",
             "text_style": "body"
           }
-        },
-        "button_cHeFbg": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
         }
       },
       "block_order": [
         "heading_kXBBMt",
-        "text_HV4wAH",
-        "button_cHeFbg"
+        "text_HV4wAH"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -203,20 +194,11 @@
             "text": "<p>Marie Claire has named My Circular Wardrobe one of the best places to sell your wardrobe online.</p>",
             "text_style": "body"
           }
-        },
-        "button_JqkF7M": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
         }
       },
       "block_order": [
         "heading_mgDy7n",
-        "text_k6wk7A",
-        "button_JqkF7M"
+        "text_k6wk7A"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
@@ -251,20 +233,11 @@
             "text": "<p>Our focus is creating a collection of sought after pieces. Our collection features everything from high street to designer brands including Zara, Ganni, Whistles, & Other Stories, Me+Em, Maje, Prada, Alexander Mcqueen, Jimmy Choo, Christian Louboutin and more.We hope you fall in love with these pieces as much as we do, and that you'll join our circular fashion movement by buying preloved.</p>",
             "text_style": "body"
           }
-        },
-        "button_xjRGPV": {
-          "type": "button",
-          "settings": {
-            "button_label": "Button label",
-            "button_link": "",
-            "button_style_secondary": false
-          }
         }
       },
       "block_order": [
         "heading_QLQjKN",
-        "text_wGQbGc",
-        "button_xjRGPV"
+        "text_wGQbGc"
       ],
       "name": "t:sections.image-with-text.presets.name",
       "settings": {
