@@ -3678,3 +3678,23 @@ details-disclosure > details {
 .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover {
   --color-button: 239, 183, 194;
 }
+
+/* ---------------------------------------------------------------------------
+   MCW: fade out sold-out products in collection / search grids (2026-08-28)
+   The card image and its title/price are dimmed; the "Sold out" badge stays
+   at full strength so it reads clearly. Adjust the opacity value to taste.
+   --------------------------------------------------------------------------- */
+.card-wrapper--sold-out .card__media,
+.card-wrapper--sold-out .card__information {
+  opacity: 0.5;
+  transition: opacity var(--duration-short) ease;
+}
+
+.card-wrapper--sold-out:hover .card__media,
+.card-wrapper--sold-out:hover .card__information {
+  opacity: 0.75;
+}
+
+.card-wrapper--sold-out .card__badge {
+  opacity: 1;
+}
