@@ -207,6 +207,7 @@
             {%- endif -%}
 
             {% render 'price', product: card_product, price_class: '', show_compare_at_price: true %}
+            {% render 'rrp', product: card_product, compact: true %}
             {%- if card_product.quantity_price_breaks_configured? -%}
               {% if card_product.variants.size == 1 and quick_add == 'bulk' %}
                 {% liquid
@@ -624,8 +625,3 @@
     </div>
   </div>
 {%- endif -%}
-{% if card_product.metafields.custom.rrp != blank %}
-  <div class="rrp">
-    RRP: {{ card_product.metafields.rrp.value | money }}
-  </div>
-{% endif %}

@@ -1,0 +1,52 @@
+{% comment %}
+  Renders the recommended retail price (RRP) next to the product's selling price,
+  with the percentage saving. Renders nothing when the product has no
+  `custom.rrp` metafield, or when the RRP is not higher than the current price.
+
+  Accepts:
+  - product: {Object} Product Liquid object (required)
+  - compact: {Boolean} Tighter styling, for use on product cards (optional)
+
+  Metafields used:
+  - custom.rrp             money OR number_decimal / number_integer — the RRP figure
+  - custom.rrp_estimated   boolean (optional) — when true the label reads "Est. RRP"
+
+  Usage:
+  {% render 'rrp', product: product %}
+  {% render 'rrp', product: card_product, compact: true %}
+{% endcomment %}
+
+{%- liquid
+  assign rrp_mf = product.metafields.custom.rrp
+
+  assign rrp_pounds = 0
+  if rrp_mf.type == 'money'
+    assign rrp_pounds = rrp_mf.value.amount | plus: 0.0
+  else
+    assign rrp_pounds = rrp_mf.value | plus: 0.0
+  endif
+
+  assign price_pounds = product.price | divided_by: 100.0
+
+  assign saving_pct = 0
+  if rrp_pounds > price_pounds
+    assign saving_pct = rrp_pounds | minus: price_pounds | times: 100.0 | divided_by: rrp_pounds | round
+  endif
+
+  assign rrp_label = 'RRP'
+  if product.metafields.custom.rrp_estimated.value
+    assign rrp_label = 'Est. RRP'
+  endif
+
+  assign rrp_display = rrp_pounds | times: 100 | round | money
+-%}
+
+{%- if rrp_mf != blank and rrp_pounds > price_pounds -%}
+  <div class="rrp{% if compact %} rrp--compact{% endif %}">
+    <span class="rrp__label">{{ rrp_label }}</span>
+    <s class="rrp__price">{{ rrp_display }}</s>
+    {%- if saving_pct >= 5 -%}
+      <span class="rrp__saving">Save {{ saving_pct }}%</span>
+    {%- endif -%}
+  </div>
+{%- endif -%}

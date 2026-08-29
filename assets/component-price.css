@@ -99,3 +99,38 @@
   text-transform: uppercase;
   color: rgba(var(--color-foreground), 0.7);
 }
+
+/* Recommended retail price (RRP) — see snippets/rrp.liquid */
+.rrp {
+  margin-top: 0.6rem;
+  font-size: 1.3rem;
+  letter-spacing: 0.07rem;
+  line-height: 1.4;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.rrp__label {
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-right: 0.4rem;
+}
+
+.rrp__price {
+  text-decoration: line-through;
+}
+
+.rrp__saving {
+  margin-left: 0.6rem;
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
+
+.rrp--compact {
+  margin-top: 0.3rem;
+  font-size: 1.1rem;
+  letter-spacing: 0.04rem;
+}
+
+.rrp--compact .rrp__saving {
+  font-weight: 500;
+}
