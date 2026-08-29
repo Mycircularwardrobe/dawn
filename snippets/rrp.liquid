@@ -20,13 +20,12 @@
 
 {%- liquid
   assign rrp_mf = product.metafields.custom.rrp
+  assign rrp_val = rrp_mf.value
 
-  assign rrp_pounds = 0
-  if rrp_mf.type == 'money'
-    assign rrp_pounds = rrp_mf.value.amount | plus: 0.0
-  else
-    assign rrp_pounds = rrp_mf.value | plus: 0.0
-  endif
+  # money-type metafields expose .amount (a decimal string in the shop currency);
+  # number types are already numeric. Fall back to the raw value for both.
+  assign rrp_amount = rrp_val.amount | default: rrp_val
+  assign rrp_pounds = rrp_amount | plus: 0.0
 
   assign price_pounds = product.price | divided_by: 100.0
 
