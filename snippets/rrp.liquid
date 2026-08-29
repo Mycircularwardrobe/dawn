@@ -9,7 +9,7 @@
 
   Metafields used:
   - custom.rrp            (type: money) — .value is an amount in cents, like product.price
-  - custom.rrp_estimated  (type: true/false, optional) — when true the label reads
+  - custom.estimated_rrp  (type: true/false, optional) — when true the label reads
                           "Est. RRP" (used for guessed or currency-converted figures);
                           otherwise it reads "RRP".
 
@@ -29,7 +29,7 @@
   endif
 
   assign rrp_label = 'RRP'
-  if product.metafields.custom.rrp_estimated.value
+  if product.metafields.custom.estimated_rrp.value
     assign rrp_label = 'Est. RRP'
   endif
 -%}
