@@ -93,7 +93,8 @@
           "type": "heading",
           "settings": {
             "heading": "Preloved designer womenswear, curated in London",
-            "heading_size": "h2"
+            "heading_size": "h2",
+            "use_as_page_heading": false
           }
         },
         "text_intro": {
@@ -281,7 +282,7 @@
         "column_UJygrB": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/sell_your_wardrobe.jpg",
+            "image": "shopify://shop_images/ChatGPT_Image_Jun_10_2026_02_57_18_PM.png",
             "title": "Sell With Us",
             "text": "<p>Sell your wardrobe with us. We take care of it all.</p><p></p><p></p><p></p><h5></h5>",
             "link_label": "Learn More",
