@@ -406,26 +406,38 @@
   customElements.define('sticky-header', StickyHeader);
 {% endjavascript %}
 
+{%- capture org_same_as -%}
+  {%- if settings.social_facebook_link != blank -%}{{ settings.social_facebook_link | json }}|{%- endif -%}
+  {%- if settings.social_instagram_link != blank -%}{{ settings.social_instagram_link | json }}|{%- endif -%}
+  {%- if settings.social_tiktok_link != blank -%}{{ settings.social_tiktok_link | json }}|{%- endif -%}
+  {%- if settings.social_youtube_link != blank -%}{{ settings.social_youtube_link | json }}|{%- endif -%}
+  {%- if settings.social_pinterest_link != blank -%}{{ settings.social_pinterest_link | json }}|{%- endif -%}
+  {%- if settings.social_twitter_link != blank -%}{{ settings.social_twitter_link | json }}|{%- endif -%}
+  {%- if settings.social_tumblr_link != blank -%}{{ settings.social_tumblr_link | json }}|{%- endif -%}
+  {%- if settings.social_snapchat_link != blank -%}{{ settings.social_snapchat_link | json }}|{%- endif -%}
+  {%- if settings.social_vimeo_link != blank -%}{{ settings.social_vimeo_link | json }}|{%- endif -%}
+{%- endcapture -%}
 <script type="application/ld+json">
   {
-    "@context": "http://schema.org",
+    "@context": "https://schema.org",
     "@type": "Organization",
     "name": {{ shop.name | json }},
-    {% if settings.logo %}
-      "logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},
-    {% endif %}
-    "sameAs": [
-      {{ settings.social_twitter_link | json }},
-      {{ settings.social_facebook_link | json }},
-      {{ settings.social_pinterest_link | json }},
-      {{ settings.social_instagram_link | json }},
-      {{ settings.social_tiktok_link | json }},
-      {{ settings.social_tumblr_link | json }},
-      {{ settings.social_snapchat_link | json }},
-      {{ settings.social_youtube_link | json }},
-      {{ settings.social_vimeo_link | json }}
-    ],
-    "url": {{ request.origin | append: page.url | json }}
+    "url": {{ request.origin | append: routes.root_url | json }},
+    "description": "My Circular Wardrobe is a London boutique for preloved designer and premium womenswear. Founded in 2020 by a mother-and-daughter team, every piece is hand-checked and authenticated before it is resold.",
+    "foundingDate": "2020",
+    {% if settings.logo %}"logo": {{ settings.logo | image_url: width: 500 | prepend: "https:" | json }},{% endif %}
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "London",
+      "addressCountry": "GB"
+    },
+    "areaServed": "Worldwide",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "contactType": "customer support",
+      "email": "info@mycircularwardrobe.com"
+    },
+    "sameAs": [{{ org_same_as | strip_newlines | split: '|' | join: ',' }}]
   }
 </script>
 
