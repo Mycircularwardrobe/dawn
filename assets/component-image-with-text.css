@@ -18,7 +18,8 @@
 }
 
 /* MCW: About page images — sage-green frame, and stop them stretching to
-   match the (long) text column, which was blowing the images up. */
+   match the text column (which was blowing the images up). Height is left to
+   the section's own setting (e.g. "adapt" = the image's natural ratio). */
 .page-about .image-with-text__media-item {
   align-self: flex-start;
 }
@@ -27,16 +28,6 @@
   border: 9px solid #466660;
   min-height: 0;
   overflow: hidden;
-}
-
-.page-about .image-with-text__media--adapt {
-  height: 34rem;
-}
-
-@media screen and (min-width: 750px) {
-  .page-about .image-with-text__media--adapt {
-    height: 46rem;
-  }
 }
 
 .image-with-text__media--small {
