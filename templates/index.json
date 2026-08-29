@@ -15,7 +15,7 @@
         "heading": {
           "type": "heading",
           "settings": {
-            "heading": "High End Fashion,<br>Circular Future",
+            "heading": "Preloved Designer Womenswear",
             "heading_size": "h0",
             "use_as_page_heading": true
           }
@@ -23,8 +23,8 @@
         "text_jMzAGU": {
           "type": "text",
           "settings": {
-            "text": "<em>Curated, authenticated premium & designer womenswear</em>",
-            "text_style": "subtitle"
+            "text": "High End Fashion · Circular Future",
+            "text_style": "caption-with-letter-spacing"
           }
         },
         "button": {
@@ -40,8 +40,8 @@
         }
       },
       "block_order": [
-        "heading",
         "text_jMzAGU",
+        "heading",
         "button"
       ],
       "settings": {
