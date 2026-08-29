@@ -242,3 +242,40 @@
 .template-index .multicolumn.background-primary .multicolumn-card {
   background: #f7f4f2;
 }
+
+/* MCW: "Learn More" links become ivory buttons, aligned across all columns */
+.template-index .multicolumn-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.template-index .multicolumn-card__info {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+}
+
+.template-index .multicolumn-card__info .link {
+  margin-top: auto;
+  align-self: flex-start;
+  display: inline-block;
+  padding: 1.1rem 2.6rem;
+  background: #ffffff;
+  border: 1px solid #466660;
+  color: #121212;
+  font-size: 1.3rem;
+  letter-spacing: 0.1rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.template-index .multicolumn-card__info .link:hover {
+  background: #466660;
+  color: #ffffff;
+}
+
+.template-index .multicolumn-card__info .link .svg-wrapper {
+  display: none;
+}
