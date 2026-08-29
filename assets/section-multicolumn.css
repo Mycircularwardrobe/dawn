@@ -260,9 +260,9 @@
   align-self: flex-start;
   display: inline-block;
   padding: 1.1rem 2.6rem;
-  background: #ffffff;
+  background: #466660;
   border: 1px solid #466660;
-  color: #121212;
+  color: #ffffff;
   font-size: 1.3rem;
   letter-spacing: 0.1rem;
   line-height: 1.2;
@@ -272,7 +272,8 @@
 }
 
 .template-index .multicolumn-card__info .link:hover {
-  background: #466660;
+  background: #3b544f;
+  border-color: #3b544f;
   color: #ffffff;
 }
 
