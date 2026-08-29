@@ -1,3 +1,17 @@
+/* MCW: banner buttons (homepage Shop / Sell) — off-white, sage-green on hover */
+.banner__buttons .button,
+.banner__buttons .button--primary {
+  --color-button: 247, 244, 242;
+  --color-button-text: 18, 18, 18;
+  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.1s ease;
+}
+
+.banner__buttons .button:not([disabled]):hover,
+.banner__buttons .button--primary:not([disabled]):hover {
+  --color-button: 70, 102, 96;
+  --color-button-text: 255, 255, 255;
+}
+
 .banner {
   display: flex;
   position: relative;
