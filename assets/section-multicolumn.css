@@ -263,17 +263,18 @@
   background: #466660;
   border: 1px solid #466660;
   color: #ffffff;
-  font-size: 1.3rem;
+  font-size: 13px;
   letter-spacing: 0.1rem;
   line-height: 1.2;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background 0.2s ease, color 0.2s ease;
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
+/* MCW: match the site's green -> soft pink button hover */
 .template-index .multicolumn-card__info .link:hover {
-  background: #3b544f;
-  border-color: #3b544f;
+  background: #efb7c2;
+  border-color: #efb7c2;
   color: #ffffff;
 }
 
