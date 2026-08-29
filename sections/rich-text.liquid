@@ -21,7 +21,13 @@
         {%- for block in section.blocks -%}
           {%- case block.type -%}
             {%- when 'heading' -%}
-              <h2
+              {%- liquid
+                assign rich_text_heading_tag = 'h2'
+                if block.settings.use_as_page_heading
+                  assign rich_text_heading_tag = 'h1'
+                endif
+              -%}
+              <{{ rich_text_heading_tag }}
                 class="rich-text__heading rte inline-richtext {{ block.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
                 {{ block.shopify_attributes }}
                 {% if settings.animations_reveal_on_scroll %}
@@ -30,7 +36,7 @@
                 {% endif %}
               >
                 {{ block.settings.heading }}
-              </h2>
+              </{{ rich_text_heading_tag }}>
             {%- when 'caption' -%}
               <p
                 class="rich-text__caption {{ block.settings.text_style }} {{ block.settings.text_style }}--{{ block.settings.text_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
@@ -220,6 +226,13 @@
           ],
           "default": "h1",
           "label": "t:sections.all.heading_size.label"
+        },
+        {
+          "type": "checkbox",
+          "id": "use_as_page_heading",
+          "default": false,
+          "label": "Use as page heading (SEO H1)",
+          "info": "Turn on for ONE heading per page (usually the first). Renders it as the page's H1. Leave off everywhere else."
         }
       ]
     },
