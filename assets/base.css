@@ -3706,3 +3706,13 @@ details-disclosure > details {
 .card-wrapper--sold-out .card__badge {
   opacity: 1;
 }
+
+/* MCW: warm beige on the browsing surfaces (collection grid + homepage sections).
+   Set here rather than in theme settings — the GitHub integration does not sync
+   config/settings_data.json. base.css loads after the inline scheme styles, so
+   these win. To revert, delete this block. */
+.color-scheme-2,
+.color-scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f {
+  --color-background: 242, 236, 224;
+  --gradient-background: #f2ece0;
+}
