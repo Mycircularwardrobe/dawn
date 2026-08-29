@@ -103,8 +103,8 @@
 }
 
 .collection-list__item .card > .card__content .card__heading > a:hover {
-  background: rgb(var(--color-foreground));
-  color: rgb(var(--color-background));
+  background: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
 }
 
 .collection-list__item .card > .card__content .card__heading .icon-wrap {
