@@ -161,8 +161,26 @@
               <span class="visually-hidden">{{ 'accessibility.vendor' | t }}</span>
               <div class="caption-with-letter-spacing light">{{ card_product.vendor }}</div>
             {%- endif -%}
-            
-              {{ card_product.title | escape }}
+            {%- liquid
+              # When the brand is shown above, drop a leading "Brand " from the title
+              # so it isn't repeated on the card. Non-destructive — the real product
+              # title is unchanged. Keeps collab titles ("Adidas by Stella McCartney").
+              assign card_title = card_product.title
+              if show_vendor and card_product.vendor != blank
+                assign vlen = card_product.vendor | size
+                assign head = card_title | slice: 0, vlen | downcase
+                assign vlower = card_product.vendor | downcase
+                if head == vlower
+                  assign stripped = card_title | slice: vlen, 9999 | lstrip
+                  assign first_char = stripped | slice: 0, 1
+                  assign safe_starts = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
+                  if stripped != blank and safe_starts contains first_char
+                    assign card_title = stripped
+                  endif
+                endif
+              endif
+            -%}
+              {{ card_title | escape }}
             </a>
           </h3>
           <div class="card-information">
