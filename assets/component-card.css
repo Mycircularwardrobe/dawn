@@ -305,6 +305,12 @@
   margin-bottom: 0;
 }
 
+/* MCW: separate the brand line from the product title on grid cards */
+.card__heading .caption-with-letter-spacing {
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
 .card__heading:last-child {
   margin-bottom: 0;
 }
