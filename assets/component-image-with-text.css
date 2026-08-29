@@ -38,9 +38,10 @@
   }
 }
 
-/* space between consecutive image/text blocks on the About page */
-.page-about .shopify-section:has(.image-with-text) + .shopify-section:has(.image-with-text) {
-  margin-top: 4rem;
+/* space between consecutive image/text blocks on the About page — as padding
+   inside the section's own (beige) background, so the gap isn't white */
+.page-about .shopify-section:has(.image-with-text) + .shopify-section:has(.image-with-text) > .gradient {
+  padding-top: 4rem;
 }
 
 .image-with-text__media--small {
