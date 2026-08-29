@@ -1,1 +1,150 @@
-{"sections":{"rich_text_V9AfHc":{"type":"rich-text","blocks":{"heading_yzVHKK":{"type":"heading","settings":{"heading":"<strong>About My Circular Wardrobe<\/strong>","heading_size":"h2"}}},"block_order":["heading_yzVHKK"],"settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"scheme-4","full_width":true,"padding_top":40,"padding_bottom":52}},"main":{"type":"main-page","disabled":true,"settings":{"padding_top":28,"padding_bottom":36}},"image_with_text_jdGPCM":{"type":"image-with-text","blocks":{"heading_aKj3Ej":{"type":"heading","settings":{"heading":"The Aim.","heading_size":"h2"}},"text_KBXpzy":{"type":"text","settings":{"text":"<p>Welcome to our collection of contemporary pre-loved pieces. We are a mother and daughter team with the shared belief in slowing down the shopping process by extending the lifetime of fashion already in existence. We launched in April 2020 and our aim' is to make you fall in love with second hand fashion, hence our motto 'preloved at first sight.' We want the shopping experience for buying second hand clothes to be one that is luxurious without compromising on style. Buying luxury doesn't always mean buying new!<\/p>","text_style":"body"}}},"block_order":["heading_aKj3Ej","text_KBXpzy"],"settings":{"image":"shopify:\/\/shop_images\/IMG_1414_c15e8ff5-7a0c-407e-ac75-f45cc5968127.jpg","height":"small","desktop_image_width":"small","layout":"text_first","desktop_content_position":"top","desktop_content_alignment":"left","content_layout":"no-overlap","section_color_scheme":"scheme-4","color_scheme":"scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f","image_behavior":"none","mobile_content_alignment":"left","padding_top":0,"padding_bottom":0}},"image_with_text_xakCx9":{"type":"image-with-text","blocks":{"text_MjBpBn":{"type":"text","settings":{"text":"<h2>Mother.<\/h2><p><\/p><p>I'm Karen and absolutely love working with my daughter Danielle. I've had over 20 years of experience in the fashion industry. I've been working in fashion and textiles after my grandparents journey began in the early 1960s exporting fabrics across the globe. There has always been a stigma attached to buying second hand but I've recently noticed the shift in attitude. I absolutely love browsing second hand charity shops and finding a hidden treasure but we wanted to create an online platform that offers a more luxurious and less time consuming experience. A lot of the existing platforms are still really expensive and we aim to sell unique pieces at prices that are really affordable. We came up with the idea of My Circular Wardrobe in January 2020 and launched our website in April!<\/p><p>​<\/p><p><\/p>","text_style":"body"}}},"block_order":["text_MjBpBn"],"settings":{"image":"shopify:\/\/shop_images\/Screenshot_2025-02-27_at_16.31.35.png","height":"adapt","desktop_image_width":"medium","layout":"text_first","desktop_content_position":"top","desktop_content_alignment":"left","content_layout":"overlap","section_color_scheme":"scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f","color_scheme":"scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f","image_behavior":"none","mobile_content_alignment":"left","padding_top":0,"padding_bottom":0}},"image_with_text_bP7cHM":{"type":"image-with-text","blocks":{"text_4j7wce":{"type":"text","settings":{"text":"<h2>Daughter.<\/h2><p> <\/p><p>I'm Danielle and like my mum I've had nearly 10 years of experience working in fashion. I've always loved selling clothes. I used to co-run an annual fashion event teamed with Grazia magazine selling discounted designer brands with the proceeds going to charity. I later joined my mum in supplying luxurious sustainable fabrics to designer brands. I've been listing my unwanted clothes on Ebay for over 15 years. I've never wanted anything go to waste though sometimes it's a little extreme! It did take me a while to buy second hand myself and at first I couldn't believe my glamorous mother was shopping in charity shops back in 2017. She changed my perception by presenting me with the beautiful pieces she discovered and making me guess the price. With the belief in second hand fashion and with my experience in selling it made so much sense for us to launch My Circular Wardrobe.<\/p><h3><strong>​<\/strong><\/h3><h2><strong>Our Collection.<\/strong><\/h2><p> <\/p><p>Our focus is creating a collection of sought after pieces. Our collection features everything from high street to designer brands including Zara, Ganni, Whistles, & Other Stories, Me+Em, Maje, Prada, Alexander Mcqueen, Jimmy Choo, Christian Louboutin and more.<\/p><p> <\/p><p>We hope that you fall in love with these pieces as much as we do! <\/p><p> <\/p><p>We hope to encourage you to join our circular fashion movement and buy pre-loved.<\/p><p>​<\/p>","text_style":"body"}}},"block_order":["text_4j7wce"],"settings":{"image":"shopify:\/\/shop_images\/Screenshot_2025-02-27_at_16.08.35.png","height":"adapt","desktop_image_width":"medium","layout":"text_first","desktop_content_position":"top","desktop_content_alignment":"left","content_layout":"overlap","section_color_scheme":"scheme-4","color_scheme":"scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f","image_behavior":"none","mobile_content_alignment":"left","padding_top":0,"padding_bottom":0}}},"order":["rich_text_V9AfHc","main","image_with_text_jdGPCM","image_with_text_xakCx9","image_with_text_bP7cHM"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_V9AfHc": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_yzVHKK": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>About My Circular Wardrobe</strong>",
+            "heading_size": "h2",
+            "use_as_page_heading": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_yzVHKK"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 36
+      }
+    },
+    "image_with_text_jdGPCM": {
+      "type": "image-with-text",
+      "blocks": {
+        "heading_aKj3Ej": {
+          "type": "heading",
+          "settings": {
+            "heading": "The Aim.",
+            "heading_size": "h2"
+          }
+        },
+        "text_KBXpzy": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Welcome to our collection of contemporary pre-loved pieces. We are a mother and daughter team with the shared belief in slowing down the shopping process by extending the lifetime of fashion already in existence. We launched in April 2020 and our aim' is to make you fall in love with second hand fashion, hence our motto 'preloved at first sight.' We want the shopping experience for buying second hand clothes to be one that is luxurious without compromising on style. Buying luxury doesn't always mean buying new!</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_aKj3Ej",
+        "text_KBXpzy"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/IMG_1414_c15e8ff5-7a0c-407e-ac75-f45cc5968127.jpg",
+        "height": "small",
+        "desktop_image_width": "small",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f",
+        "color_scheme": "scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_xakCx9": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_MjBpBn": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Mother.</h2><p></p><p>I'm Karen and absolutely love working with my daughter Danielle. I've had over 20 years of experience in the fashion industry. I've been working in fashion and textiles after my grandparents journey began in the early 1960s exporting fabrics across the globe. There has always been a stigma attached to buying second hand but I've recently noticed the shift in attitude. I absolutely love browsing second hand charity shops and finding a hidden treasure but we wanted to create an online platform that offers a more luxurious and less time consuming experience. A lot of the existing platforms are still really expensive and we aim to sell unique pieces at prices that are really affordable. We came up with the idea of My Circular Wardrobe in January 2020 and launched our website in April!</p><p>​</p><p></p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "text_MjBpBn"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2025-02-27_at_16.31.35.png",
+        "height": "medium",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f",
+        "color_scheme": "scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    },
+    "image_with_text_bP7cHM": {
+      "type": "image-with-text",
+      "blocks": {
+        "text_4j7wce": {
+          "type": "text",
+          "settings": {
+            "text": "<h2>Daughter.</h2><p> </p><p>I'm Danielle and like my mum I've had nearly 10 years of experience working in fashion. I've always loved selling clothes. I used to co-run an annual fashion event teamed with Grazia magazine selling discounted designer brands with the proceeds going to charity. I later joined my mum in supplying luxurious sustainable fabrics to designer brands. I've been listing my unwanted clothes on Ebay for over 15 years. I've never wanted anything go to waste though sometimes it's a little extreme! It did take me a while to buy second hand myself and at first I couldn't believe my glamorous mother was shopping in charity shops back in 2017. She changed my perception by presenting me with the beautiful pieces she discovered and making me guess the price. With the belief in second hand fashion and with my experience in selling it made so much sense for us to launch My Circular Wardrobe.</p><h3><strong>​</strong></h3><h2><strong>Our Collection.</strong></h2><p> </p><p>Our focus is creating a collection of sought after pieces. Our collection features everything from high street to designer brands including Zara, Ganni, Whistles, & Other Stories, Me+Em, Maje, Prada, Alexander Mcqueen, Jimmy Choo, Christian Louboutin and more.</p><p> </p><p>We hope that you fall in love with these pieces as much as we do! </p><p> </p><p>We hope to encourage you to join our circular fashion movement and buy pre-loved.</p><p>​</p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "text_4j7wce"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Screenshot_2025-02-27_at_16.08.35.png",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "top",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "section_color_scheme": "scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f",
+        "color_scheme": "scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f",
+        "image_behavior": "none",
+        "mobile_content_alignment": "left",
+        "padding_top": 0,
+        "padding_bottom": 0
+      }
+    }
+  },
+  "order": [
+    "rich_text_V9AfHc",
+    "main",
+    "image_with_text_jdGPCM",
+    "image_with_text_xakCx9",
+    "image_with_text_bP7cHM"
+  ]
+}
