@@ -17,6 +17,11 @@
   overflow: visible;
 }
 
+/* MCW: sage-green frame on the About page images */
+.page-about .image-with-text__media {
+  border: 3px solid #466660;
+}
+
 .image-with-text__media--small {
   height: 19.4rem;
 }
