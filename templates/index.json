@@ -12,19 +12,19 @@
     "image_banner": {
       "type": "image-banner",
       "blocks": {
+        "text_jMzAGU": {
+          "type": "text",
+          "settings": {
+            "text": "High End Fashion · Circular Future",
+            "text_style": "subtitle"
+          }
+        },
         "heading": {
           "type": "heading",
           "settings": {
             "heading": "Preloved Designer Womenswear",
             "heading_size": "h0",
             "use_as_page_heading": true
-          }
-        },
-        "text_jMzAGU": {
-          "type": "text",
-          "settings": {
-            "text": "High End Fashion · Circular Future",
-            "text_style": "subtitle"
           }
         },
         "button": {
@@ -45,7 +45,7 @@
         "button"
       ],
       "settings": {
-        "image": "shopify://shop_images/ChatGPT_Image_May_20_2026_09_18_51_PM.png",
+        "image": "shopify://shop_images/home_page_image.png",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-right",
@@ -281,7 +281,7 @@
         "column_UJygrB": {
           "type": "column",
           "settings": {
-            "image": "shopify://shop_images/childrens-clothing-in-funky-colors.jpg",
+            "image": "shopify://shop_images/sell_your_wardrobe.jpg",
             "title": "Sell With Us",
             "text": "<p>Sell your wardrobe with us. We take care of it all.</p><p></p><p></p><p></p><h5></h5>",
             "link_label": "Learn More",
