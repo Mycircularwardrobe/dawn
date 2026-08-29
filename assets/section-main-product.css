@@ -263,7 +263,8 @@ a.product__text {
 }
 
 .product__text.caption-with-letter-spacing + .product__title {
-  margin-top: 0;
+  /* MCW: a little breathing room between the brand line and the product title */
+  margin-top: 0.6rem;
 }
 
 .product__accordion .accordion__content {
