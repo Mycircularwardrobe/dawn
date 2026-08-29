@@ -17,17 +17,30 @@
   overflow: visible;
 }
 
-/* MCW: About page images — sage-green frame, and stop them stretching to
-   match the text column (which was blowing the images up). Height is left to
-   the section's own setting (e.g. "adapt" = the image's natural ratio). */
+/* MCW: About page images — sage-green frame, kept compact, and stopped from
+   stretching to match the text column. */
 .page-about .image-with-text__media-item {
   align-self: flex-start;
+  flex: 0 1 28rem;
 }
 
 .page-about .image-with-text__media {
   border: 9px solid #466660;
   min-height: 0;
   overflow: hidden;
+}
+
+@media screen and (max-width: 749px) {
+  .page-about .image-with-text__media-item {
+    flex-basis: auto;
+    max-width: 20rem;
+    margin-inline: auto;
+  }
+}
+
+/* space between consecutive image/text blocks on the About page */
+.page-about .shopify-section:has(.image-with-text) + .shopify-section:has(.image-with-text) {
+  margin-top: 4rem;
 }
 
 .image-with-text__media--small {
