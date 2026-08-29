@@ -7,11 +7,11 @@
   - product: {Object} Product Liquid object (required)
   - compact: {Boolean} Tighter styling, for use on product cards (optional)
 
-  Metafield used:
-  - custom.rrp  (type: money) — its .value is an amount in cents, like product.price
-
-  The figures are pulled from product descriptions (many are estimates, and
-  non-GBP RRPs are converted), so the label always reads "Est. RRP".
+  Metafields used:
+  - custom.rrp            (type: money) — .value is an amount in cents, like product.price
+  - custom.rrp_estimated  (type: true/false, optional) — when true the label reads
+                          "Est. RRP" (used for guessed or currency-converted figures);
+                          otherwise it reads "RRP".
 
   Usage:
   {% render 'rrp', product: product %}
@@ -27,11 +27,16 @@
   if rrp_pounds > price_pounds
     assign saving_pct = rrp_pounds | minus: price_pounds | times: 100.0 | divided_by: rrp_pounds | round
   endif
+
+  assign rrp_label = 'RRP'
+  if product.metafields.custom.rrp_estimated.value
+    assign rrp_label = 'Est. RRP'
+  endif
 -%}
 
 {%- if rrp_mf != blank and rrp_pounds > price_pounds -%}
   <div class="rrp{% if compact %} rrp--compact{% endif %}">
-    <span class="rrp__label">Est. RRP</span>
+    <span class="rrp__label">{{ rrp_label }}</span>
     <s class="rrp__price">{{ rrp_mf.value | money }}</s>
     {%- if saving_pct >= 5 -%}
       <span class="rrp__saving">Save {{ saving_pct }}%</span>
