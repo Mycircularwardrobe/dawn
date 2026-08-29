@@ -405,6 +405,18 @@
   }
 }
 
+/* Enlarge the homepage hero eyebrow line ("High End Fashion · Circular Future").
+   image-banner is only used on the homepage, so this is safely scoped. */
+.banner__text.subtitle {
+  font-size: 2rem;
+}
+
+@media screen and (min-width: 750px) {
+  .banner__text.subtitle {
+    font-size: 2.6rem;
+  }
+}
+
 .banner__box > * + * {
   margin-top: 1rem;
 }
