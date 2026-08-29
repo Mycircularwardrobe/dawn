@@ -237,3 +237,8 @@
 .template-index .multicolumn-card__image-wrapper .media {
   border: 9px solid #466660;
 }
+
+/* MCW: beige card background instead of the default grey wash */
+.template-index .multicolumn.background-primary .multicolumn-card {
+  background: #f7f4f2;
+}
