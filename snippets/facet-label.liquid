@@ -1,0 +1,15 @@
+{%- comment -%}
+  Renders a filter value label, swapping Shopify's US taxonomy spellings for
+  UK ones (the taxonomy value names themselves can't be edited in admin).
+  Accepts: label (string)
+{%- endcomment -%}
+{%- liquid
+  assign facet_label = label
+  case label
+    when 'Gray'
+      assign facet_label = 'Grey'
+    when 'Multicolor'
+      assign facet_label = 'Multicolour'
+  endcase
+  echo facet_label | escape
+-%}
