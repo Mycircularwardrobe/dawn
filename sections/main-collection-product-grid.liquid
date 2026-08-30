@@ -56,9 +56,10 @@
       <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
         <form class="facets-vertical-form" id="FacetSortForm">
           {%- if section.settings.enable_grid_toggle -%}
+            {%- assign grid_toggle_cols = '3,4,6' | split: ',' -%}
             <div class="cc-grid-toggle" role="group" aria-label="Products per row">
               <span class="cc-grid-toggle__label" aria-hidden="true">View</span>
-              {%- for cols in '3,4,6' | split: ',' -%}
+              {%- for cols in grid_toggle_cols -%}
                 <button
                   type="button"
                   class="cc-grid-toggle__btn"
