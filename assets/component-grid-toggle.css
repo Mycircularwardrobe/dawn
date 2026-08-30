@@ -1,0 +1,70 @@
+/*
+  Shopper-facing "products per row" toggle for collection pages (desktop only).
+  State lives in a class on <html> (cc-grid-4 / cc-grid-6); no class = theme default.
+  Widths mirror Dawn's own .grid--N-col-desktop rules so gutters stay consistent.
+*/
+.cc-grid-toggle {
+  display: none;
+}
+
+@media screen and (min-width: 990px) {
+  .cc-grid-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.2rem;
+    margin-right: 2rem;
+  }
+
+  .cc-grid-toggle__label {
+    font-size: 1.1rem;
+    letter-spacing: 0.04rem;
+    text-transform: uppercase;
+    color: rgba(var(--color-foreground), 0.6);
+    margin-right: 0.6rem;
+  }
+
+  .cc-grid-toggle__btn {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: 0;
+    padding: 0.4rem 0.6rem;
+    margin: 0;
+    font-family: inherit;
+    font-size: 1.3rem;
+    line-height: 1;
+    color: rgba(var(--color-foreground), 0.55);
+    border-bottom: 0.2rem solid transparent;
+    cursor: pointer;
+    transition: color 0.1s ease;
+  }
+
+  .cc-grid-toggle__btn:hover {
+    color: rgb(var(--color-foreground));
+  }
+
+  .cc-grid-toggle__btn:focus-visible {
+    outline: 0.2rem solid rgb(var(--color-foreground));
+    outline-offset: 0.2rem;
+  }
+
+  /* active state, derived purely from the <html> class */
+  html:not(.cc-grid-4):not(.cc-grid-6) .cc-grid-toggle__btn[data-cc-grid="3"],
+  html.cc-grid-4 .cc-grid-toggle__btn[data-cc-grid="4"],
+  html.cc-grid-6 .cc-grid-toggle__btn[data-cc-grid="6"] {
+    color: rgb(var(--color-foreground));
+    border-bottom-color: rgb(var(--color-foreground));
+    font-weight: 600;
+  }
+
+  /* the density overrides themselves */
+  html.cc-grid-4 .product-grid.grid .grid__item {
+    width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+    max-width: calc(25% - var(--grid-desktop-horizontal-spacing) * 3 / 4);
+  }
+
+  html.cc-grid-6 .product-grid.grid .grid__item {
+    width: calc(16.66% - var(--grid-desktop-horizontal-spacing) * 5 / 6);
+    max-width: calc(16.66% - var(--grid-desktop-horizontal-spacing) * 5 / 6);
+  }
+}

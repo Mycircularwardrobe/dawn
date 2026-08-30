@@ -2,6 +2,19 @@
 {{ 'component-card.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 
+{%- if section.settings.enable_grid_toggle and section.settings.filter_type == 'vertical' -%}
+  {{ 'component-grid-toggle.css' | asset_url | stylesheet_tag }}
+  <script>
+    (function () {
+      try {
+        var v = localStorage.getItem('cc-grid-cols');
+        if (v === '4' || v === '6') document.documentElement.classList.add('cc-grid-' + v);
+      } catch (e) {}
+    })();
+  </script>
+  <script src="{{ 'grid-toggle.js' | asset_url }}" defer="defer"></script>
+{%- endif -%}
+
 {% if section.settings.image_shape == 'blob' %}
   {{ 'mask-blobs.css' | asset_url | stylesheet_tag }}
 {%- endif -%}
@@ -42,6 +55,21 @@
     {%- if section.settings.enable_sorting and section.settings.filter_type == 'vertical' -%}
       <facet-filters-form class="facets facets-vertical-sort page-width small-hide">
         <form class="facets-vertical-form" id="FacetSortForm">
+          {%- if section.settings.enable_grid_toggle -%}
+            <div class="cc-grid-toggle" role="group" aria-label="Products per row">
+              <span class="cc-grid-toggle__label" aria-hidden="true">View</span>
+              {%- for cols in '3,4,6' | split: ',' -%}
+                <button
+                  type="button"
+                  class="cc-grid-toggle__btn"
+                  data-cc-grid="{{ cols }}"
+                  aria-label="Show {{ cols }} products per row"
+                >
+                  {{- cols -}}
+                </button>
+              {%- endfor -%}
+            </div>
+          {%- endif -%}
           <div class="facet-filters sorting caption">
             <div class="facet-filters__field">
               <h2 class="facet-filters__label caption-large text-body">
@@ -217,6 +245,13 @@
       "step": 1,
       "default": 4,
       "label": "t:sections.main-collection-product-grid.settings.columns_desktop.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "enable_grid_toggle",
+      "default": true,
+      "label": "Show \"products per row\" toggle",
+      "info": "Lets shoppers switch between 3, 4 and 6 products per row on desktop. Vertical filter layout only."
     },
     {
       "type": "color_scheme",
