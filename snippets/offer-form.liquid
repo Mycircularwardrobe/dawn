@@ -55,21 +55,35 @@
     }
     .offer-dialog {
       position: relative;
-      width: min(30rem, 92vw);
+      width: min(60rem, 94vw);
+      max-height: 92vh;
+      overflow-y: auto;
       border: 1px solid rgba(var(--color-foreground), 0.15);
       border-radius: var(--popup-corner-radius, 0);
-      padding: 2.5rem;
+      padding: 3rem;
       color: rgb(var(--color-foreground));
       background: rgb(var(--color-background));
     }
     .offer-dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
     .offer-dialog__close {
-      position: absolute; top: 0.8rem; right: 0.8rem;
-      background: transparent; border: 0; font-size: 2.2rem; line-height: 1;
-      cursor: pointer; color: inherit;
+      position: absolute; top: 1.1rem; right: 1.1rem;
+      background: transparent; border: 0; font-size: 2.4rem; line-height: 1;
+      cursor: pointer; color: inherit; padding: 0.4rem;
     }
-    .offer-dialog h2 { margin: 0 0 0.4rem; }
-    .offer-dialog__sub { margin: 0 0 1.6rem; font-size: 1.3rem; opacity: 0.75; }
+    .offer-dialog__grid {
+      display: grid;
+      grid-template-columns: 1fr 20rem;
+      gap: 3rem;
+      align-items: start;
+    }
+    .offer-dialog__aside { text-align: center; }
+    .offer-dialog__aside img {
+      width: 100%; height: auto; display: block;
+      border: 1px solid rgba(var(--color-foreground), 0.1);
+    }
+    .offer-dialog__aside-title { margin: 1.2rem 0 0.4rem; font-size: 1.6rem; }
+    .offer-dialog__aside-price { margin: 0; font-size: 1.5rem; opacity: 0.8; }
+    .offer-dialog h2 { margin: 0 0 1.6rem; }
     .offer-field { margin-bottom: 1.2rem; }
     .offer-field label { display: block; margin-bottom: 0.4rem; font-size: 1.3rem; }
     .offer-field input,
@@ -86,6 +100,13 @@
     .offer-dialog__msg--ok { background: rgba(var(--color-foreground), 0.06); }
     .offer-dialog__msg--err { border: 1px solid #d02b2b; color: #d02b2b; }
     .offer-dialog form button[type='submit'] { width: 100%; margin-top: 0.4rem; }
+    @media screen and (max-width: 680px) {
+      .offer-dialog { padding: 2rem; }
+      .offer-dialog__grid { grid-template-columns: 1fr; gap: 1.6rem; }
+      .offer-dialog__aside { order: -1; display: flex; align-items: center; gap: 1.2rem; text-align: left; }
+      .offer-dialog__aside img { width: 8rem; flex: 0 0 auto; }
+      .offer-dialog__aside-title { margin: 0; }
+    }
   </style>
 
   <div class="offer-form" data-offer-form>
@@ -99,83 +120,111 @@
         &times;
       </button>
 
-      {%- form 'contact', id: contact_form_id, class: 'offer-contact-form' -%}
-        {%- if form.posted_successfully? -%}
-          <div class="offer-dialog__msg offer-dialog__msg--ok" data-offer-success>
-            Thanks — your offer has been sent. We'll email you back at
-            {{ form.email | default: 'the address you gave' }} soon.
-          </div>
-        {%- else -%}
-          {%- if form.errors -%}
-            <div class="offer-dialog__msg offer-dialog__msg--err" data-offer-error>
-              {{ form.errors | default_errors }}
-            </div>
-          {%- endif -%}
+      <div class="offer-dialog__grid">
+        <div class="offer-dialog__main">
+          {%- form 'contact', id: contact_form_id, class: 'offer-contact-form' -%}
+            {%- if form.posted_successfully? -%}
+              <div class="offer-dialog__msg offer-dialog__msg--ok" data-offer-success>
+                Thanks — your offer has been sent. We'll get back to you within 24 hours.
+              </div>
+            {%- else -%}
+              {%- if form.errors -%}
+                <div class="offer-dialog__msg offer-dialog__msg--err" data-offer-error>
+                  {{ form.errors | default_errors }}
+                </div>
+              {%- endif -%}
 
-          <h2>Make a considered offer</h2>
-          <p class="offer-dialog__sub">
-            {{ product.title }} — listed at {{ product.price | money }}
-          </p>
+              <h2>Make a considered offer</h2>
 
-          <input type="hidden" name="contact[Product]" value="{{ product.title | escape }}">
-          <input
-            type="hidden"
-            name="contact[Product URL]"
-            value="{{ shop.secure_url }}{{ product.url }}"
-          >
-          <input type="hidden" name="contact[Listed price]" value="{{ product.price | money }}">
+              <input type="hidden" name="contact[Product]" value="{{ product.title | escape }}">
+              <input
+                type="hidden"
+                name="contact[Product URL]"
+                value="{{ shop.secure_url }}{{ product.url }}"
+              >
+              <input type="hidden" name="contact[Listed price]" value="{{ product.price | money }}">
 
-          <div class="offer-field">
-            <label for="{{ uid }}-name">Your name</label>
-            <input type="text" id="{{ uid }}-name" name="contact[name]" required>
-          </div>
+              <div class="offer-field">
+                <label for="{{ uid }}-name">Name</label>
+                <input
+                  type="text"
+                  id="{{ uid }}-name"
+                  name="contact[name]"
+                  placeholder="Enter your name"
+                  required
+                >
+              </div>
 
-          <div class="offer-field">
-            <label for="{{ uid }}-email">Your email</label>
-            <input type="email" id="{{ uid }}-email" name="contact[email]" required>
-          </div>
+              <div class="offer-field">
+                <label for="{{ uid }}-email">Email</label>
+                <input
+                  type="email"
+                  id="{{ uid }}-email"
+                  name="contact[email]"
+                  placeholder="Enter your email"
+                  required
+                >
+              </div>
 
-          {%- if product.variants.size > 1 -%}
-            <div class="offer-field">
-              <label for="{{ uid }}-variant">Which option</label>
-              <select id="{{ uid }}-variant" name="contact[Option]">
-                {%- for v in product.variants -%}
-                  <option
-                    value="{{ v.title | escape }}"
-                    {% if v.id == product.selected_or_first_available_variant.id %}selected{% endif %}
-                  >
-                    {{ v.title }}{% unless v.available %} (sold out){% endunless %}
-                  </option>
-                {%- endfor -%}
-              </select>
-            </div>
-          {%- endif -%}
+              {%- if product.variants.size > 1 -%}
+                <div class="offer-field">
+                  <label for="{{ uid }}-variant">Which option</label>
+                  <select id="{{ uid }}-variant" name="contact[Option]">
+                    {%- for v in product.variants -%}
+                      <option
+                        value="{{ v.title | escape }}"
+                        {% if v.id == product.selected_or_first_available_variant.id %}selected{% endif %}
+                      >
+                        {{ v.title }}{% unless v.available %} (sold out){% endunless %}
+                      </option>
+                    {%- endfor -%}
+                  </select>
+                </div>
+              {%- endif -%}
 
-          <div class="offer-field">
-            <label for="{{ uid }}-amount">Your offer ({{ cart.currency.iso_code }})</label>
-            <input
-              type="number"
-              inputmode="decimal"
-              min="1"
-              step="0.01"
-              id="{{ uid }}-amount"
-              name="contact[Offer amount]"
-              required
+              <div class="offer-field">
+                <label for="{{ uid }}-amount">Your offer</label>
+                <input
+                  type="number"
+                  inputmode="decimal"
+                  min="1"
+                  step="0.01"
+                  id="{{ uid }}-amount"
+                  name="contact[Offer amount]"
+                  placeholder="Enter your offer ({{ cart.currency.iso_code }})"
+                  required
+                >
+              </div>
+
+              <div class="offer-field">
+                <label for="{{ uid }}-body">Message (optional)</label>
+                <textarea id="{{ uid }}-body" name="contact[body]"></textarea>
+              </div>
+
+              <div class="offer-form__hp" aria-hidden="true">
+                <label>Leave this field empty<input type="text" name="contact[nickname]" tabindex="-1" autocomplete="off"></label>
+              </div>
+
+              <button type="submit" class="button button--primary">Send offer</button>
+            {%- endif -%}
+          {%- endform -%}
+        </div>
+
+        <aside class="offer-dialog__aside">
+          {%- if product.featured_image -%}
+            {%- assign offer_img_h = 500 | divided_by: product.featured_image.aspect_ratio | round -%}
+            <img
+              src="{{ product.featured_image | image_url: width: 500 }}"
+              alt="{{ product.featured_image.alt | escape }}"
+              width="500"
+              height="{{ offer_img_h }}"
+              loading="lazy"
             >
-          </div>
-
-          <div class="offer-field">
-            <label for="{{ uid }}-body">Message (optional)</label>
-            <textarea id="{{ uid }}-body" name="contact[body]"></textarea>
-          </div>
-
-          <div class="offer-form__hp" aria-hidden="true">
-            <label>Leave this field empty<input type="text" name="contact[nickname]" tabindex="-1" autocomplete="off"></label>
-          </div>
-
-          <button type="submit" class="button button--primary">Send offer</button>
-        {%- endif -%}
-      {%- endform -%}
+          {%- endif -%}
+          <p class="offer-dialog__aside-title">{{ product.title }}</p>
+          <p class="offer-dialog__aside-price">{{ product.price | money }}</p>
+        </aside>
+      </div>
     </dialog>
   </div>
 
