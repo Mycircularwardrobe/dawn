@@ -1,0 +1,36 @@
+{% comment %}
+  Renders the "Make a considered offer" opener button, sitting inside the product
+  buy-buttons (between Add to Cart and the dynamic checkout button). The popup it
+  opens — and all the offer logic — lives in snippets/offer-form.liquid, which is
+  rendered separately from sections/main-product.liquid (it can't be nested here
+  because it contains its own <form>).
+
+  Shows only when the product is available AND in an offers collection. Keep the
+  handle list below identical to the one in snippets/offer-form.liquid.
+
+  Accepts:
+  - product: {Object} Product Liquid object (required)
+
+  Usage:
+  {% render 'offer-button', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign offer_collection_handles = 'product-with-offers,products-with-offers,offers,make-an-offer' | split: ','
+  assign in_offer_collection = false
+  for c in product.collections
+    if offer_collection_handles contains c.handle
+      assign in_offer_collection = true
+    endif
+  endfor
+-%}
+
+{%- if in_offer_collection and product.available -%}
+  <button
+    type="button"
+    class="button button--full-width offer-form__open"
+    data-offer-open="offer-{{ product.id }}"
+  >
+    Make a considered offer
+  </button>
+{%- endif -%}

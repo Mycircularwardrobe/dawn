@@ -1,8 +1,13 @@
 {% comment %}
-  Renders a "Make an offer" button + modal on the product page, so a customer can
-  propose a price. Submitting posts through Shopify's native contact form, so every
-  offer arrives as an email to the store's contact email address (Settings >
-  Notifications > "Customer contact"). There is no app and no per-sale fee.
+  Renders the "Make a considered offer" popup on the product page, so a customer
+  can propose a price. The opener button is rendered separately by
+  snippets/offer-button.liquid (inside buy-buttons, so it can sit under Add to
+  Cart); this snippet is the <dialog> + form and must live OUTSIDE the product
+  <form>, so it is rendered from sections/main-product.liquid.
+
+  Submitting posts through Shopify's native contact form, so every offer arrives
+  as an email to the store's contact email address (Settings > Notifications).
+  There is no app and no per-sale fee.
 
   Replaces the Offerley app. What it does NOT do (Offerley did, a server can't be
   replaced by theme code): offer inbox, auto accept/decline rules, counter-offers,
@@ -38,14 +43,14 @@
   {%- assign uid = 'offer-' | append: product.id -%}
 
   <style>
-    .offer-form { margin-top: 1rem; }
     .offer-form__open {
       width: 100%;
-      background: transparent;
-      color: rgb(var(--color-foreground));
-      border: 1px solid rgba(var(--color-foreground), 0.4);
+      margin-top: 1rem;
+      --color-button: 0, 0, 0;
+      --color-button-text: 255, 255, 255;
+      --alpha-button-background: 1;
+      --alpha-button-border: 1;
     }
-    .offer-form__open:hover { border-color: rgb(var(--color-foreground)); }
     .offer-dialog {
       position: relative;
       width: min(30rem, 92vw);
@@ -82,10 +87,6 @@
   </style>
 
   <div class="offer-form" data-offer-form>
-    <button type="button" class="button offer-form__open" data-offer-open="{{ uid }}">
-      Make an offer
-    </button>
-
     <dialog class="offer-dialog" id="{{ uid }}">
       <button
         type="button"
@@ -109,7 +110,7 @@
             </div>
           {%- endif -%}
 
-          <h2>Make an offer</h2>
+          <h2>Make a considered offer</h2>
           <p class="offer-dialog__sub">
             {{ product.title }} — listed at {{ product.price | money }}
           </p>
@@ -182,6 +183,9 @@
         var wrap = el.closest('[data-offer-form]');
         return wrap ? wrap.querySelector('dialog') : null;
       }
+      function dialogById(id) {
+        return document.getElementById(id);
+      }
       function openDialog(d) {
         if (!d) return;
         if (typeof d.showModal === 'function') d.showModal();
@@ -197,7 +201,7 @@
         window.__offerFormBound = true;
         document.addEventListener('click', function (e) {
           var opener = e.target.closest('[data-offer-open]');
-          if (opener) { openDialog(dialogFor(opener)); return; }
+          if (opener) { openDialog(dialogById(opener.getAttribute('data-offer-open'))); return; }
           var closer = e.target.closest('[data-offer-close]');
           if (closer) { closeDialog(dialogFor(closer)); return; }
           if (e.target.matches('dialog.offer-dialog')) closeDialog(e.target);
