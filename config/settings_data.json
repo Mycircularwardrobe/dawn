@@ -154,37 +154,6 @@
         "disabled": false,
         "settings": {}
       },
-      "1597712856375791536": {
-        "type": "shopify://apps/offerly/blocks/offerly_button/9c164c65-7ad5-498e-b219-73ac655ca2f9",
-        "disabled": false,
-        "settings": {
-          "mainButtonBackgroundColor": "#000000",
-          "mainButtonTextColor": "#FFFFFF",
-          "mainButtonHoverColor": "#484848",
-          "mainButtonText": "Make a considered offer",
-          "hideAddToCartButton": false,
-          "popUpHeader": "Make a considered offer",
-          "showSubHeader": false,
-          "subHeaderText": "We consider thoughtful offers on selected pieces. Pricing reflects condition, rarity and market value.",
-          "showPhoneInputField": false,
-          "phoneRequired": false,
-          "showAdditionalInformation": true,
-          "additionalInformationRequired": false,
-          "additionalInformationLabel": "We'll get back to you within 24 hours!",
-          "secondAdditionalInformation": false,
-          "secondAdditionalInformationRequired": false,
-          "additionalInformationLabelSecondary": "Shipping Information",
-          "includeTermsBox": false,
-          "termsLabel": "Accept Terms and Conditions",
-          "termsLink": "www.shopify.com/terms",
-          "popUpBackgroundcolour": "#ffffff",
-          "popUpTextColor": "#000000",
-          "includeImageMobile": false,
-          "useTotalAmount": true,
-          "showCompareAtPrice": false,
-          "customCSS": "/* Add custom CSS here! */"
-        }
-      },
       "13768625480086291342": {
         "type": "shopify://apps/forms/blocks/forms/8744a304-fcb1-4347-b211-bb6b4759a76a",
         "disabled": false,
