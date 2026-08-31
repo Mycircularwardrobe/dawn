@@ -127,9 +127,9 @@
   }
 
   .collection-list__item .card > .card__content .card__heading > a {
-    padding: 0.8rem 1.6rem;
-    font-size: 1.1rem;
-    letter-spacing: 0.08rem;
+    padding: 1.4rem 3.2rem;
+    font-size: 1.6rem;
+    letter-spacing: 0.12rem;
     white-space: normal;
     text-align: center;
   }
