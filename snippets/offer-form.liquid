@@ -41,11 +41,13 @@
 
 {%- if in_offer_collection and product.available -%}
   {%- assign uid = 'offer-' | append: product.id -%}
+  {%- assign contact_form_id = uid | append: '-contact' -%}
 
   <style>
     .offer-form__open {
       width: 100%;
       margin-top: 1rem;
+      margin-bottom: 1rem;
       --color-button: 0, 0, 0;
       --color-button-text: 255, 255, 255;
       --alpha-button-background: 1;
@@ -97,7 +99,7 @@
         &times;
       </button>
 
-      {%- form 'contact', id: uid | append: '-contact', class: 'offer-contact-form' -%}
+      {%- form 'contact', id: contact_form_id, class: 'offer-contact-form' -%}
         {%- if form.posted_successfully? -%}
           <div class="offer-dialog__msg offer-dialog__msg--ok" data-offer-success>
             Thanks — your offer has been sent. We'll email you back at
