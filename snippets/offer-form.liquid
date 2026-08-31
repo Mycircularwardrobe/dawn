@@ -1,0 +1,225 @@
+{% comment %}
+  Renders a "Make an offer" button + modal on the product page, so a customer can
+  propose a price. Submitting posts through Shopify's native contact form, so every
+  offer arrives as an email to the store's contact email address (Settings >
+  Notifications > "Customer contact"). There is no app and no per-sale fee.
+
+  Replaces the Offerley app. What it does NOT do (Offerley did, a server can't be
+  replaced by theme code): offer inbox, auto accept/decline rules, counter-offers,
+  auto-generated discount codes, automated buyer emails. To accept an offer you
+  create a Draft Order in the admin with a custom price and send the invoice.
+
+  Shows ONLY when the product is in one of the offer collections listed below AND
+  the product is available.
+
+  Accepts:
+  - product: {Object} Product Liquid object (required)
+
+  Setup:
+  - Put every product you accept offers on into a collection, then make sure that
+    collection's handle is in `offer_collection_handles` below. The handle is the
+    part of the collection URL after /collections/ .
+
+  Usage:
+  {% render 'offer-form', product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign offer_collection_handles = 'product-with-offers,products-with-offers,offers,make-an-offer' | split: ','
+  assign in_offer_collection = false
+  for c in product.collections
+    if offer_collection_handles contains c.handle
+      assign in_offer_collection = true
+    endif
+  endfor
+-%}
+
+{%- if in_offer_collection and product.available -%}
+  {%- assign uid = 'offer-' | append: product.id -%}
+
+  <style>
+    .offer-form { margin-top: 1rem; }
+    .offer-form__open {
+      width: 100%;
+      background: transparent;
+      color: rgb(var(--color-foreground));
+      border: 1px solid rgba(var(--color-foreground), 0.4);
+    }
+    .offer-form__open:hover { border-color: rgb(var(--color-foreground)); }
+    .offer-dialog {
+      position: relative;
+      width: min(30rem, 92vw);
+      border: 1px solid rgba(var(--color-foreground), 0.15);
+      border-radius: var(--popup-corner-radius, 0);
+      padding: 2.5rem;
+      color: rgb(var(--color-foreground));
+      background: rgb(var(--color-background));
+    }
+    .offer-dialog::backdrop { background: rgba(0, 0, 0, 0.5); }
+    .offer-dialog__close {
+      position: absolute; top: 0.8rem; right: 0.8rem;
+      background: transparent; border: 0; font-size: 2.2rem; line-height: 1;
+      cursor: pointer; color: inherit;
+    }
+    .offer-dialog h2 { margin: 0 0 0.4rem; }
+    .offer-dialog__sub { margin: 0 0 1.6rem; font-size: 1.3rem; opacity: 0.75; }
+    .offer-field { margin-bottom: 1.2rem; }
+    .offer-field label { display: block; margin-bottom: 0.4rem; font-size: 1.3rem; }
+    .offer-field input,
+    .offer-field select,
+    .offer-field textarea {
+      width: 100%; padding: 1rem; font-size: 1.5rem;
+      border: 1px solid rgba(var(--color-foreground), 0.3);
+      background: rgb(var(--color-background)); color: inherit;
+      border-radius: var(--inputs-radius, 0);
+    }
+    .offer-field textarea { min-height: 6rem; resize: vertical; }
+    .offer-form__hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+    .offer-dialog__msg { padding: 1.2rem; font-size: 1.4rem; margin-bottom: 1.4rem; }
+    .offer-dialog__msg--ok { background: rgba(var(--color-foreground), 0.06); }
+    .offer-dialog__msg--err { border: 1px solid #d02b2b; color: #d02b2b; }
+    .offer-dialog form button[type='submit'] { width: 100%; margin-top: 0.4rem; }
+  </style>
+
+  <div class="offer-form" data-offer-form>
+    <button type="button" class="button offer-form__open" data-offer-open="{{ uid }}">
+      Make an offer
+    </button>
+
+    <dialog class="offer-dialog" id="{{ uid }}">
+      <button
+        type="button"
+        class="offer-dialog__close"
+        data-offer-close
+        aria-label="Close"
+      >
+        &times;
+      </button>
+
+      {%- form 'contact', id: uid | append: '-contact', class: 'offer-contact-form' -%}
+        {%- if form.posted_successfully? -%}
+          <div class="offer-dialog__msg offer-dialog__msg--ok" data-offer-success>
+            Thanks — your offer has been sent. We'll email you back at
+            {{ form.email | default: 'the address you gave' }} soon.
+          </div>
+        {%- else -%}
+          {%- if form.errors -%}
+            <div class="offer-dialog__msg offer-dialog__msg--err" data-offer-error>
+              {{ form.errors | default_errors }}
+            </div>
+          {%- endif -%}
+
+          <h2>Make an offer</h2>
+          <p class="offer-dialog__sub">
+            {{ product.title }} — listed at {{ product.price | money }}
+          </p>
+
+          <input type="hidden" name="contact[Product]" value="{{ product.title | escape }}">
+          <input
+            type="hidden"
+            name="contact[Product URL]"
+            value="{{ shop.secure_url }}{{ product.url }}"
+          >
+          <input type="hidden" name="contact[Listed price]" value="{{ product.price | money }}">
+
+          <div class="offer-field">
+            <label for="{{ uid }}-name">Your name</label>
+            <input type="text" id="{{ uid }}-name" name="contact[name]" required>
+          </div>
+
+          <div class="offer-field">
+            <label for="{{ uid }}-email">Your email</label>
+            <input type="email" id="{{ uid }}-email" name="contact[email]" required>
+          </div>
+
+          {%- if product.variants.size > 1 -%}
+            <div class="offer-field">
+              <label for="{{ uid }}-variant">Which option</label>
+              <select id="{{ uid }}-variant" name="contact[Option]">
+                {%- for v in product.variants -%}
+                  <option
+                    value="{{ v.title | escape }}"
+                    {% if v.id == product.selected_or_first_available_variant.id %}selected{% endif %}
+                  >
+                    {{ v.title }}{% unless v.available %} (sold out){% endunless %}
+                  </option>
+                {%- endfor -%}
+              </select>
+            </div>
+          {%- endif -%}
+
+          <div class="offer-field">
+            <label for="{{ uid }}-amount">Your offer ({{ cart.currency.iso_code }})</label>
+            <input
+              type="number"
+              inputmode="decimal"
+              min="1"
+              step="0.01"
+              id="{{ uid }}-amount"
+              name="contact[Offer amount]"
+              required
+            >
+          </div>
+
+          <div class="offer-field">
+            <label for="{{ uid }}-body">Message (optional)</label>
+            <textarea id="{{ uid }}-body" name="contact[body]"></textarea>
+          </div>
+
+          <div class="offer-form__hp" aria-hidden="true">
+            <label>Leave this field empty<input type="text" name="contact[nickname]" tabindex="-1" autocomplete="off"></label>
+          </div>
+
+          <button type="submit" class="button button--primary">Send offer</button>
+        {%- endif -%}
+      {%- endform -%}
+    </dialog>
+  </div>
+
+  <script>
+    (function () {
+      function dialogFor(el) {
+        var wrap = el.closest('[data-offer-form]');
+        return wrap ? wrap.querySelector('dialog') : null;
+      }
+      function openDialog(d) {
+        if (!d) return;
+        if (typeof d.showModal === 'function') d.showModal();
+        else d.setAttribute('open', '');
+      }
+      function closeDialog(d) {
+        if (!d) return;
+        if (typeof d.close === 'function') d.close();
+        else d.removeAttribute('open');
+      }
+
+      if (!window.__offerFormBound) {
+        window.__offerFormBound = true;
+        document.addEventListener('click', function (e) {
+          var opener = e.target.closest('[data-offer-open]');
+          if (opener) { openDialog(dialogFor(opener)); return; }
+          var closer = e.target.closest('[data-offer-close]');
+          if (closer) { closeDialog(dialogFor(closer)); return; }
+          if (e.target.matches('dialog.offer-dialog')) closeDialog(e.target);
+        });
+        document.addEventListener('submit', function (e) {
+          var f = e.target;
+          if (!f.classList || !f.classList.contains('offer-contact-form')) return;
+          var hp = f.querySelector('input[name="contact[nickname]"]');
+          if (hp && hp.value) e.preventDefault();
+        });
+      }
+
+      // Re-open automatically after a submit so the customer sees the result.
+      var form = document.currentScript.parentNode.querySelector('[data-offer-form]');
+      if (
+        form &&
+        (form.querySelector('[data-offer-success]') ||
+          form.querySelector('[data-offer-error]') ||
+          /[?&]contact_posted=true/.test(window.location.search))
+      ) {
+        openDialog(form.querySelector('dialog'));
+      }
+    })();
+  </script>
+{%- endif -%}
