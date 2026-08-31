@@ -340,6 +340,18 @@
   color: rgba(var(--color-foreground), 0.75);
 }
 
+/* Inline links inside the footer rich-text blurb (e.g. the contact email) —
+   the default link colour is near-invisible on the dark footer background. */
+.footer-block__details-content.rte a {
+  color: rgb(var(--color-foreground));
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.footer-block__details-content.rte a:hover {
+  text-decoration: none;
+}
+
 .footer-block__details-content .list-menu__item--active {
   transition: text-decoration-thickness var(--duration-short) ease;
   color: rgb(var(--color-foreground));
