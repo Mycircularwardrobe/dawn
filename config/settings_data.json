@@ -442,5 +442,10 @@
         }
       }
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "@media screen and (max-width: 749px) {.header {grid-template-columns: 1fr 2.6fr 1fr; } .header__heading-logo-wrapper {max-width: 260px; margin: 0 auto; }}"
+    ]
   }
 }
