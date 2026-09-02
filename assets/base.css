@@ -3659,9 +3659,9 @@ details-disclosure > details {
 
 .badge.badge--sale,
 .price .badge.price__badge-sale {
-  background-color: #f4dcdc !important;
-  border-color: #e6c5c5 !important;
-  color: #a53d3d !important;
+  background-color: #eac7ce !important;
+  border-color: #eac7ce !important;
+  color: #7d2b32 !important;
 }
 
 /* ---------------------------------------------------------------------------
