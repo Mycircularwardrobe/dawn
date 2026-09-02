@@ -445,8 +445,7 @@
   },
   "platform_customizations": {
     "custom_css": [
-      "body {border-top: 4px solid red !important; }",
-      "@media screen and (max-width: 749px) {.header {grid-template-columns: 1fr 2.6fr 1fr; } .header__heading-logo-wrapper {max-width: 260px; margin: 0 auto; }}"
+      "@media screen and (max-width: 749px) {.header {grid-template-columns: 1fr auto 1fr !important; } .header__heading-logo, .header__heading-logo-wrapper {width: 60vw !important; max-width: 60vw !important; }}"
     ]
   }
 }
