@@ -273,8 +273,8 @@
 
 /* MCW: match the site's green -> soft pink button hover */
 .template-index .multicolumn-card__info .link:hover {
-  background: #efb7c2;
-  border-color: #efb7c2;
+  background: #eac7ce;
+  border-color: #eac7ce;
   color: #ffffff;
 }
 
