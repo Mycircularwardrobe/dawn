@@ -1,1 +1,81 @@
-{"sections":{"rich_text_V9AfHc":{"type":"rich-text","blocks":{"heading_yzVHKK":{"type":"heading","settings":{"heading":"<strong>Authenticity<\/strong>","heading_size":"h2"}}},"block_order":["heading_yzVHKK"],"settings":{"desktop_content_position":"center","content_alignment":"center","color_scheme":"scheme-4","full_width":true,"padding_top":44,"padding_bottom":0}},"main":{"type":"main-page","disabled":true,"settings":{"padding_top":28,"padding_bottom":36}},"rich_text_qkXJwL":{"type":"rich-text","blocks":{"heading_Xj9zL9":{"type":"heading","settings":{"heading":"","heading_size":"h1"}},"text_39CANr":{"type":"text","settings":{"text":"<p>We value our global community of fashion lovers visiting our online store and we understand your concerns about purchasing genuine products. All of our luxury pieces are 100% authentic. The majority of our luxury pieces are sourced from a close and trusted network. When we receive a luxury item from a seller we evaluate the physical item and compare the product to the original item description, check the quality (seams, buttons, zippers, linings etc) and we research any signs that the product may not be authentic. We do not sell fakes or replicas. If you have any questions regarding your order, please do not hesitate to contact us at <a href=\"mailto:info@mycircularwardrobe.com\">info@mycircularwardrobe.com<\/a>.<\/p>"}}},"block_order":["heading_Xj9zL9","text_39CANr"],"settings":{"desktop_content_position":"center","content_alignment":"left","color_scheme":"scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f","full_width":true,"padding_top":0,"padding_bottom":52}}},"order":["rich_text_V9AfHc","main","rich_text_qkXJwL"]}
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "rich_text_V9AfHc": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_yzVHKK": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>Authenticity</strong>",
+            "heading_size": "h2",
+            "use_as_page_heading": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_yzVHKK"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-2",
+        "full_width": true,
+        "padding_top": 44,
+        "padding_bottom": 0
+      }
+    },
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {
+        "padding_top": 28,
+        "padding_bottom": 36
+      }
+    },
+    "rich_text_qkXJwL": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_Xj9zL9": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1",
+            "use_as_page_heading": false
+          }
+        },
+        "text_39CANr": {
+          "type": "text",
+          "settings": {
+            "text": "<p><strong>Authenticity</strong></p><p>Every designer piece we sell is 100% authentic. We do not sell fakes or replicas.</p><p>Most of our luxury pieces come from a close, trusted network of sellers. Every item is checked by our team in London before it’s listed, and not everything we’re offered makes the cut.</p><p><strong>What we check</strong></p><ul><li><strong>Labels:</strong> brand, size and care labels, matched against the brand’s genuine details</li><li><strong>Serial numbers:</strong> checked where the brand uses them</li><li><strong>Hardware:</strong> zips, buttons, clasps and fastenings, including engravings and weight</li><li><strong>Stitching and seams:</strong> secure, even and finished to the brand’s standard</li><li><strong>Materials and finishing:</strong> fabric, leather, linings and hems</li><li><strong>Condition:</strong> any wear, marks, pilling or fading is noted in the listing</li></ul><p>See exactly how we do it in our blog post, <a href=\"https://www.mycircularwardrobe.com/blogs/news/before-it-reaches-you-how-we-inspect-every-preloved-piece\">Before It Reaches You: How We Inspect Every Preloved Piece</a>.</p><p><strong>If you have any doubts</strong><br/><br/>Email us at <a href=\"mailto:info@mycircularwardrobe.com\">info@mycircularwardrobe.com</a> and we’ll send extra photos of the labels, serial numbers or any detail you’d like to see. If an item is ever found not to be authentic, we’ll give you a full refund, including postage.</p><p>We aim to describe every item accurately. If anything doesn’t match its listing, we’ll refund you in full, including the cost of postage.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_Xj9zL9",
+        "text_39CANr"
+      ],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "left",
+        "color_scheme": "scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f",
+        "full_width": true,
+        "padding_top": 0,
+        "padding_bottom": 52
+      }
+    }
+  },
+  "order": [
+    "rich_text_V9AfHc",
+    "main",
+    "rich_text_qkXJwL"
+  ]
+}
