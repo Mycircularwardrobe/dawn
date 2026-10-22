@@ -101,49 +101,34 @@
   font-weight: normal;
 }
 
-/* "Shop" opens as a side drawer instead of a full-width panel (desktop) */
+/* "Shop" is a compact dropdown under its menu item (desktop); other items use the full-width mega menu */
 @media screen and (min-width: 990px) {
-  .mega-menu--drawer .mega-menu__content {
-    bottom: 0;
-    height: 100vh;
-    left: 0;
-    max-height: none;
-    padding: 9rem 3rem 3rem;
-    position: fixed;
+  .mega-menu--dropdown {
+    position: relative;
+  }
+
+  .mega-menu--dropdown .mega-menu__content {
+    border: 0.1rem solid rgba(var(--color-foreground), 0.08);
+    box-shadow: 0 0.4rem 2rem rgba(var(--color-foreground), 0.12);
+    left: 50%;
+    padding: 1.6rem 2.4rem;
     right: auto;
-    top: 0;
-    width: 38rem;
-    z-index: 5;
-    box-shadow: 0.4rem 0 2rem rgba(var(--color-foreground), 0.15);
+    transform: translateX(-50%);
+    width: 26rem;
   }
 
-  .js .mega-menu--drawer .mega-menu__content,
-  .mega-menu--drawer[open] .mega-menu__content {
-    opacity: 1;
-    transform: none;
+  .js .mega-menu--dropdown .mega-menu__content {
+    transform: translateX(-50%) translateY(-1.5rem);
   }
 
-  .mega-menu--drawer[open] .mega-menu__content {
-    animation: mega-menu-drawer-in 0.3s ease-out;
+  .mega-menu--dropdown[open] .mega-menu__content {
+    transform: translateX(-50%) translateY(0);
   }
 
-  .mega-menu--drawer .mega-menu__list--condensed {
+  .mega-menu--dropdown .mega-menu__list--condensed {
+    gap: 1.2rem;
     grid-template-columns: 1fr;
-    gap: 1.6rem;
-    padding: 0;
     max-width: none;
-  }
-
-  .mega-menu--drawer .mega-menu__link {
-    font-size: 1.8rem;
-  }
-}
-
-@keyframes mega-menu-drawer-in {
-  from {
-    transform: translateX(-100%);
-  }
-  to {
-    transform: translateX(0);
+    padding: 0;
   }
 }
