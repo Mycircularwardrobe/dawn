@@ -46,6 +46,12 @@ sku,product_id,title,brand,category,size,shoe_size,colour,condition,price,rrp,rr
     endfor
     assign colour = colour | strip | remove_last: ';'
     assign desc = product.description | strip_html | strip_newlines | strip
+    assign size_val = product.metafields.custom.size.value | join: '; '
+    assign shoe_val = product.metafields.custom.shoe_size.value | join: '; '
+    assign condition = product.metafields.custom.condition.value
+    if condition == blank and desc contains 'Condition:'
+      assign condition = desc | split: 'Condition:' | last | split: 'RRP' | first | split: 'Est' | first | strip | truncate: 60, ''
+    endif
     assign category = product.category.name
     if category == blank
       assign category = product.type
@@ -56,6 +62,9 @@ sku,product_id,title,brand,category,size,shoe_size,colour,condition,price,rrp,rr
       assign img = product.images[i]
       if img != blank
         assign u = img | image_url: width: 1600
+        unless u contains 'http'
+          assign u = u | prepend: 'https:'
+        endunless
       else
         assign u = ''
       endif
@@ -63,7 +72,7 @@ sku,product_id,title,brand,category,size,shoe_size,colour,condition,price,rrp,rr
     endfor
   -%}
 {%- if include_row -%}
-"{{ variant.sku | replace: '"', '""' }}","{{ product.id }}","{{ product.title | replace: '"', '""' }}","{{ product.vendor | replace: '"', '""' }}","{{ category | replace: '"', '""' }}","{{ product.metafields.custom.size.value | replace: '"', '""' }}","{{ product.metafields.custom.shoe_size.value | replace: '"', '""' }}","{{ colour | replace: '"', '""' }}","{{ product.metafields.custom.condition.value | replace: '"', '""' }}","{{ price }}","{{ rrp }}","{{ est }}","{{ cart.currency.iso_code }}","{{ stock }}","{{ variant.inventory_quantity }}","{{ desc | replace: '"', '""' }}","{{ shop_url }}/products/{{ product.handle }}"{{ img_cells }}
+"{{ variant.sku | replace: '"', '""' }}","{{ product.id }}","{{ product.title | replace: '"', '""' }}","{{ product.vendor | replace: '"', '""' }}","{{ category | replace: '"', '""' }}","{{ size_val | replace: '"', '""' }}","{{ shoe_val | replace: '"', '""' }}","{{ colour | replace: '"', '""' }}","{{ condition | replace: '"', '""' }}","{{ price }}","{{ rrp }}","{{ est }}","{{ cart.currency.iso_code }}","{{ stock }}","{{ variant.inventory_quantity }}","{{ desc | replace: '"', '""' }}","{{ shop_url }}/products/{{ product.handle }}"{{ img_cells }}
 {% endif -%}
 {% endfor -%}
 {%- endpaginate -%}
