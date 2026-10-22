@@ -17,9 +17,15 @@
 <div class="color-{{ section.settings.color_scheme }} gradient">
   <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
     {%- if section.settings.heading != blank -%}
-      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {%- liquid
+        assign contact_heading_tag = 'h2'
+        if section.settings.use_as_page_heading
+          assign contact_heading_tag = 'h1'
+        endif
+      -%}
+      <{{ contact_heading_tag }} class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         {{ section.settings.heading }}
-      </h2>
+      </{{ contact_heading_tag }}>
     {%- else -%}
       <h2 class="visually-hidden">{{ 'templates.contact.form.title' | t }}</h2>
     {%- endif -%}
@@ -149,6 +155,12 @@
       "id": "heading",
       "default": "t:sections.contact-form.settings.title.default",
       "label": "t:sections.contact-form.settings.title.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "use_as_page_heading",
+      "default": false,
+      "label": "Use as the page's main heading (H1)"
     },
     {
       "type": "select",

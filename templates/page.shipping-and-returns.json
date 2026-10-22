@@ -17,7 +17,7 @@
           "settings": {
             "heading": "<strong>Shipping & Returns</strong>",
             "heading_size": "h2",
-            "use_as_page_heading": false
+            "use_as_page_heading": true
           }
         }
       },
