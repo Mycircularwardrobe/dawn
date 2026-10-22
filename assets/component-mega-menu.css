@@ -79,7 +79,22 @@
 }
 
 .mega-menu .mega-menu__list--condensed {
-  display: block;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem 3rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.header--top-center .mega-menu__list--condensed > li {
+  width: auto;
+  padding-right: 0;
+}
+
+@media screen and (max-width: 989px) {
+  .mega-menu .mega-menu__list--condensed {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .mega-menu__list--condensed .mega-menu__link {
