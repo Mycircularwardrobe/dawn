@@ -100,3 +100,50 @@
 .mega-menu__list--condensed .mega-menu__link {
   font-weight: normal;
 }
+
+/* "Shop" opens as a side drawer instead of a full-width panel (desktop) */
+@media screen and (min-width: 990px) {
+  .mega-menu--drawer .mega-menu__content {
+    bottom: 0;
+    height: 100vh;
+    left: 0;
+    max-height: none;
+    padding: 9rem 3rem 3rem;
+    position: fixed;
+    right: auto;
+    top: 0;
+    width: 38rem;
+    z-index: 5;
+    box-shadow: 0.4rem 0 2rem rgba(var(--color-foreground), 0.15);
+  }
+
+  .js .mega-menu--drawer .mega-menu__content,
+  .mega-menu--drawer[open] .mega-menu__content {
+    opacity: 1;
+    transform: none;
+  }
+
+  .mega-menu--drawer[open] .mega-menu__content {
+    animation: mega-menu-drawer-in 0.3s ease-out;
+  }
+
+  .mega-menu--drawer .mega-menu__list--condensed {
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    padding: 0;
+    max-width: none;
+  }
+
+  .mega-menu--drawer .mega-menu__link {
+    font-size: 1.8rem;
+  }
+}
+
+@keyframes mega-menu-drawer-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

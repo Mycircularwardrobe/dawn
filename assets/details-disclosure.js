@@ -37,18 +37,27 @@ class HeaderMenu extends DetailsDisclosure {
     super();
     this.header = document.querySelector('.header-wrapper');
 
-    // Open on hover and close shortly after the pointer leaves (mouse users only; keyboard and touch keep click behaviour)
+    // Mouse users: the mega menu opens on hover and closes shortly after the pointer leaves.
+    // A drawer menu (e.g. Shop) opens on click instead, and closes when the pointer leaves the drawer.
     this.hoverQuery = window.matchMedia('(hover: hover) and (pointer: fine)');
+    this.isDrawer = this.mainDetailsToggle.classList.contains('mega-menu--drawer');
     this.addEventListener('mouseenter', this.onHoverIn.bind(this));
     this.addEventListener('mouseleave', this.onHoverOut.bind(this));
+    this.content.addEventListener('mouseenter', () => {
+      this.enteredContent = true;
+    });
+    this.mainDetailsToggle.addEventListener('toggle', () => {
+      if (!this.mainDetailsToggle.hasAttribute('open')) this.enteredContent = false;
+    });
     this.mainDetailsToggle.querySelector('summary').addEventListener('click', (event) => {
-      if (this.hoverQuery.matches && event.detail > 0) event.preventDefault();
+      if (this.hoverQuery.matches && !this.isDrawer && event.detail > 0) event.preventDefault();
     });
   }
 
   onHoverIn() {
     if (!this.hoverQuery.matches) return;
     clearTimeout(this.hoverTimeout);
+    if (this.isDrawer) return;
     document.querySelectorAll('header-menu').forEach((menu) => {
       if (menu !== this && menu.mainDetailsToggle.hasAttribute('open')) menu.close();
     });
@@ -60,6 +69,7 @@ class HeaderMenu extends DetailsDisclosure {
 
   onHoverOut() {
     if (!this.hoverQuery.matches) return;
+    if (this.isDrawer && !this.enteredContent) return;
     clearTimeout(this.hoverTimeout);
     this.hoverTimeout = setTimeout(() => this.close(), 200);
   }
