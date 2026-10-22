@@ -1,0 +1,24 @@
+{%- comment -%}
+  Returns alt text for a product photo.
+  Uses the alt text saved in Shopify when there is one; otherwise falls back to the product name
+  (plus "photo N" for the second photo onwards), so no product image goes out without a description.
+
+  Accepts:
+  - media: {Object} Product media object
+  - title: {String} Product title
+  - raw: {Boolean} Skip HTML-escaping, for values passed into image_tag (which escapes itself)
+{%- endcomment -%}
+{%- liquid
+  assign photo_alt_text = media.alt
+  if photo_alt_text == blank
+    assign photo_alt_text = title
+    if photo_alt_text != blank and media.position > 1
+      assign photo_alt_text = photo_alt_text | append: ' – photo ' | append: media.position
+    endif
+  endif
+-%}
+{%- if raw -%}
+  {{- photo_alt_text -}}
+{%- else -%}
+  {{- photo_alt_text | escape -}}
+{%- endif -%}
