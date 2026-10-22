@@ -1,0 +1,59 @@
+{%- layout none -%}
+{%- comment -%}
+  Live CSV product feed for Relove (Endource), served from any collection:
+
+    /collections/<handle>?view=relove-feed&country=GB          (rows 1-50)
+    /collections/<handle>?view=relove-feed&country=GB&page=2   (rows 51-100)
+
+  - Only products in the collection are listed; availability is read live from Shopify.
+  - Shopify caps a page at 50 products, so a 100-item collection needs page=1 and page=2.
+    The header row is only on page 1, so the pages can be joined end to end.
+  - country=GB makes Shopify Markets return GBP prices whatever the fetcher's location.
+  - Columns for fields not yet held as data (condition, colour, category) stay blank
+    until those metafields / taxonomy values are filled in.
+{%- endcomment -%}
+{%- paginate collection.products by 50 -%}
+{%- if paginate.current_page == 1 -%}
+sku,product_id,title,brand,category,size,shoe_size,colour,condition,price,rrp,rrp_is_estimate,currency,availability,quantity,description,product_url,image_1,image_2,image_3,image_4,image_5
+{% endif -%}
+{%- for product in collection.products -%}
+  {%- liquid
+    assign variant = product.variants.first
+    assign price = variant.price | divided_by: 100.0 | round: 2
+    assign rrp = ''
+    if product.metafields.custom.rrp.value != blank
+      assign rrp = product.metafields.custom.rrp.value | divided_by: 100.0 | round: 2
+    endif
+    assign est = ''
+    if product.metafields.custom.estimated_rrp.value != blank
+      assign est = product.metafields.custom.estimated_rrp.value
+    endif
+    assign stock = 'out of stock'
+    if product.available
+      assign stock = 'in stock'
+    endif
+    assign colour = ''
+    for c in product.metafields.shopify['color-pattern'].value
+      assign colour = colour | append: c.label | append: '; '
+    endfor
+    assign colour = colour | strip | remove_last: ';'
+    assign desc = product.description | strip_html | strip_newlines | strip
+    assign category = product.category.name
+    if category == blank
+      assign category = product.type
+    endif
+    assign shop_url = shop.url | split: '?' | first
+    assign img_cells = ''
+    for i in (0..4)
+      assign img = product.images[i]
+      if img != blank
+        assign u = img | image_url: width: 1600
+      else
+        assign u = ''
+      endif
+      assign img_cells = img_cells | append: ',"' | append: u | append: '"'
+    endfor
+  -%}
+"{{ variant.sku | replace: '"', '""' }}","{{ product.id }}","{{ product.title | replace: '"', '""' }}","{{ product.vendor | replace: '"', '""' }}","{{ category | replace: '"', '""' }}","{{ product.metafields.custom.size.value | replace: '"', '""' }}","{{ product.metafields.custom.shoe_size.value | replace: '"', '""' }}","{{ colour | replace: '"', '""' }}","{{ product.metafields.custom.condition.value | replace: '"', '""' }}","{{ price }}","{{ rrp }}","{{ est }}","{{ cart.currency.iso_code }}","{{ stock }}","{{ variant.inventory_quantity }}","{{ desc | replace: '"', '""' }}","{{ shop_url }}/products/{{ product.handle }}"{{ img_cells }}
+{% endfor -%}
+{%- endpaginate -%}
