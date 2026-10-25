@@ -23,7 +23,7 @@
           "type": "heading",
           "settings": {
             "heading": "Preloved Designer <br>Womenswear London",
-            "heading_size": "h2",
+            "heading_size": "h0",
             "use_as_page_heading": true
           }
         },
@@ -48,7 +48,7 @@
         "image": "shopify://shop_images/home_page_image_NEW.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
-        "desktop_content_position": "middle-left",
+        "desktop_content_position": "bottom-left",
         "show_text_box": false,
         "desktop_content_alignment": "left",
         "color_scheme": "scheme-1",
