@@ -547,3 +547,11 @@
     min-width: 12rem;
   }
 }
+
+/* MCW homepage hero (desktop): keep the heading and buttons in a narrow column on the left
+   so they stay on the plain beige part of the photo and clear of the handbag. */
+@media screen and (min-width: 750px) {
+  .banner--medium.banner--desktop-transparent .banner__content .banner__box {
+    max-width: 42rem;
+  }
+}
