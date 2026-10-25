@@ -45,7 +45,7 @@
         "button"
       ],
       "settings": {
-        "image": "shopify://shop_images/home_page_image_533065c8-ea06-4182-8d92-dc3c716cf9ef.png",
+        "image": "shopify://shop_images/home_page_image_NEW.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "desktop_content_position": "middle-right",
@@ -326,7 +326,7 @@
       "type": "apps",
       "blocks": {
         "rocket_google_reviews_app_block_MJ8bAY": {
-          "type": "shopify://apps/google-reviews-rocket/blocks/app-block/d11c8893-a181-4aff-a280-7446d42cec3b",
+          "type": "shopify://apps/entangle-google-reviews/blocks/app-block/d11c8893-a181-4aff-a280-7446d42cec3b",
           "settings": {
             "widget_layout": "default"
           }
