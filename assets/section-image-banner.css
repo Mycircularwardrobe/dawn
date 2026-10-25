@@ -427,7 +427,7 @@
 
 @media screen and (min-width: 750px) {
   .banner__text.subtitle {
-    font-size: 2.6rem;
+    font-size: 2.3rem;
   }
 }
 
@@ -552,6 +552,6 @@
    so they stay on the plain beige part of the photo and clear of the handbag. */
 @media screen and (min-width: 750px) {
   .banner--medium.banner--desktop-transparent .banner__content .banner__box {
-    max-width: 42rem;
+    max-width: 40rem;
   }
 }
