@@ -555,11 +555,11 @@
   }
 }
 
-/* MCW homepage hero (desktop): sit the photo on the right ~70% of the banner and fade its left edge into
-   a matching taupe background, so the words have plain space on the left and stay clear of the handbag. */
+/* MCW homepage hero (desktop): sit the photo on the right ~70% of the banner and sit it against
+   a plain cream panel, so the words have plain space on the left and stay clear of the handbag. */
 @media screen and (min-width: 750px) {
   .banner--desktop-transparent .banner__media {
-    background-color: #b09e91;
+    background-color: #f7f4f2;
   }
 
   .banner--desktop-transparent .banner__media.media > img:not(.zoom):not(.deferred-media__poster-button) {
@@ -567,8 +567,6 @@
     right: 0;
     width: 70.4%;
     max-width: none;
-    -webkit-mask-image: linear-gradient(to right, transparent 0, #000 22%);
-    mask-image: linear-gradient(to right, transparent 0, #000 22%);
   }
 }
 
