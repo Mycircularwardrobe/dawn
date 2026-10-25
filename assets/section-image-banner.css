@@ -427,7 +427,7 @@
 
 @media screen and (min-width: 750px) {
   .banner__text.subtitle {
-    font-size: 2.6rem;
+    font-size: 2.4rem;
   }
 }
 
@@ -548,15 +548,9 @@
   }
 }
 
-/* MCW homepage hero (desktop): large dark text in the bottom-left corner of the photo.
-   A soft light glow keeps the letters readable where they pass over the handbag. */
+/* MCW homepage hero (desktop): dark text in the bottom-left corner of the photo. */
 @media screen and (min-width: 750px) {
   .banner--medium.banner--desktop-transparent .banner__content .banner__box {
     max-width: 66rem;
-  }
-
-  .banner--desktop-transparent .banner__box .banner__heading,
-  .banner--desktop-transparent .banner__box .banner__text {
-    text-shadow: 0 0 1.2rem rgba(247, 244, 242, 0.9), 0 0 0.4rem rgba(247, 244, 242, 0.7);
   }
 }
