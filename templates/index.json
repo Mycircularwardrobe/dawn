@@ -23,7 +23,7 @@
           "type": "heading",
           "settings": {
             "heading": "Preloved Designer Womenswear London",
-            "heading_size": "h0",
+            "heading_size": "h1",
             "use_as_page_heading": true
           }
         },
@@ -48,13 +48,13 @@
         "image": "shopify://shop_images/home_page_image_NEW.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
-        "desktop_content_position": "middle-right",
-        "show_text_box": false,
-        "desktop_content_alignment": "right",
-        "color_scheme": "scheme-b14fb3e8-f303-48a2-9820-8a478ab7f96a",
+        "desktop_content_position": "middle-left",
+        "show_text_box": true,
+        "desktop_content_alignment": "left",
+        "color_scheme": "scheme-1",
         "image_behavior": "none",
         "mobile_content_alignment": "center",
-        "stack_images_on_mobile": false,
+        "stack_images_on_mobile": true,
         "show_text_below": false
       }
     },
