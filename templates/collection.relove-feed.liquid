@@ -9,9 +9,8 @@
   - Shopify caps a page at 50 products, so a 100-item collection needs page=1 and page=2.
     The header row is only on page 1, so the pages can be joined end to end.
   - country=GB makes Shopify Markets return GBP prices whatever the fetcher's location.
-  - Products priced under GBP 50 are skipped (min_price_pence below); the collection itself
-    can't combine brand rules with a price rule, so the floor is applied here. A page of
-    50 collection products may therefore show fewer than 50 rows.
+  - Products priced under GBP 20 are skipped (min_price_pence below). The Relove collection
+    already holds only products of GBP 20 and over, so this is just a backstop.
   - Columns for fields not yet held as data (condition, colour, category) stay blank
     until those metafields / taxonomy values are filled in.
 {%- endcomment -%}
@@ -22,7 +21,7 @@ sku,product_id,title,brand,category,size,shoe_size,colour,condition,price,rrp,rr
 {%- for product in collection.products -%}
   {%- liquid
     assign variant = product.variants.first
-    assign min_price_pence = 5000
+    assign min_price_pence = 2000
     assign include_row = false
     if variant.price >= min_price_pence
       assign include_row = true
