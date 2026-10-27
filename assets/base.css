@@ -3706,3 +3706,23 @@ details-disclosure > details {
 .card-wrapper--sold-out .card__badge {
   opacity: 1;
 }
+
+/* ---------------------------------------------------------------------------
+   MCW: thinner announcement bar (2026-10-27)
+   Dawn sizes the text, arrows and social icons at 3.8rem (38px). All three are
+   brought down to 3rem (30px) together so nothing sticks out of the bar.
+   --------------------------------------------------------------------------- */
+.announcement-bar__message {
+  padding: 0.6rem 0;
+  min-height: 3rem;
+}
+
+.utility-bar .list-social__item .list-social__link {
+  height: 3rem;
+}
+
+@media screen and (min-width: 990px) {
+  .announcement-bar .slider-button {
+    height: 3rem;
+  }
+}
