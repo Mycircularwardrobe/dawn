@@ -3668,7 +3668,7 @@ details-disclosure > details {
    MCW: green buttons fade to the theme soft pink on hover (2026-08-28)
    #eac7ce (234,199,206) is the theme's soft pink, the pink used in colour
    scheme 2. Scoped to the colour schemes whose button colour is the green
-   #466660 — so white buttons (e.g. on the pink section) are left untouched.
+   #47665d — so white buttons (e.g. on the pink section) are left untouched.
    If a new green colour scheme is added, add its .color-<id> class here.
    Label colour is unchanged (near-white), matching how the theme itself
    pairs text with this pink.

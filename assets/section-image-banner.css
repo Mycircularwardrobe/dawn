@@ -8,7 +8,7 @@
 
 .banner__buttons .button:not([disabled]):hover,
 .banner__buttons .button--primary:not([disabled]):hover {
-  --color-button: 70, 102, 96;
+  --color-button: 71, 102, 93;
   --color-button-text: 255, 255, 255;
 }
 

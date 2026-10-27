@@ -235,7 +235,7 @@
 /* MCW: sage-green frame on the homepage About / Sell With Us / Refunds images,
    matching the About page. */
 .template-index .multicolumn-card__image-wrapper .media {
-  border: 9px solid #466660;
+  border: 9px solid #47665d;
 }
 
 /* MCW: beige card background instead of the default grey wash */
@@ -260,8 +260,8 @@
   align-self: flex-start;
   display: inline-block;
   padding: 1.1rem 2.6rem;
-  background: #466660;
-  border: 1px solid #466660;
+  background: #47665d;
+  border: 1px solid #47665d;
   color: #ffffff;
   font-size: 13px;
   letter-spacing: 0.1rem;
