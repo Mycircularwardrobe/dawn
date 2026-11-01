@@ -3670,8 +3670,8 @@ details-disclosure > details {
    scheme 2. Scoped to the colour schemes whose button colour is the green
    #47665d — so white buttons (e.g. on the pink section) are left untouched.
    If a new green colour scheme is added, add its .color-<id> class here.
-   Label colour is unchanged (near-white), matching how the theme itself
-   pairs text with this pink.
+   Labels are pink (#eac7ce) at rest and switch to ivory (#f7f4f2) on hover
+   so the text never disappears into the pink (2026-11-01).
    --------------------------------------------------------------------------- */
 .button:not(.button--secondary):not(.button--tertiary):not([disabled]) {
   transition: box-shadow var(--duration-short) ease,
@@ -3684,7 +3684,9 @@ details-disclosure > details {
 .color-scheme-f2d47c04-02cb-4ef1-b0fd-f469af2a2c16 .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover,
 .color-scheme-3ae1da5a-f8e0-4b06-8865-7909facfe43f .button:not(.button--secondary):not(.button--tertiary):not([disabled]):hover {
   --color-button: 234, 199, 206;
+  --color-button-text: 247, 244, 242;
   background-color: #eac7ce;
+  color: #f7f4f2;
 }
 
 /* ---------------------------------------------------------------------------
@@ -3725,4 +3727,13 @@ details-disclosure > details {
   .announcement-bar .slider-button {
     height: 3rem;
   }
+}
+
+/* ---------------------------------------------------------------------------
+   MCW: footer headings in the brand pink (2026-11-01)
+   Only the headings: the small links and paragraph text stay white, because
+   pink on green gets too faint at that size.
+   --------------------------------------------------------------------------- */
+.footer .footer-block__heading {
+  color: #eac7ce;
 }
