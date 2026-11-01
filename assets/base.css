@@ -3728,12 +3728,3 @@ details-disclosure > details {
     height: 3rem;
   }
 }
-
-/* ---------------------------------------------------------------------------
-   MCW: footer headings in the brand pink (2026-11-01)
-   Only the headings: the small links and paragraph text stay white, because
-   pink on green gets too faint at that size.
-   --------------------------------------------------------------------------- */
-.footer .footer-block__heading {
-  color: #eac7ce;
-}
