@@ -721,7 +721,7 @@
     -%}
 
     <script type="application/ld+json">
-      {{ product | structured_data }}
+      {%- render 'product-structured-data', product: product -%}
     </script>
   </div>
 </product-info>

@@ -1,0 +1,113 @@
+{%- comment -%}
+  Product JSON-LD for search engines and AI shopping tools.
+  Replaces Shopify's default `product | structured_data` so we can say
+  each item's condition (preloved vs new with tags), size and colour.
+
+  Condition: Google Shopping app field mm-google-shopping.condition
+  ("new" / "used"), falling back to the "new with tags" tag. Anything
+  not marked new is treated as preloved (UsedCondition).
+{%- endcomment -%}
+{%- liquid
+  assign condition_raw = product.metafields['mm-google-shopping'].condition.value | downcase
+  assign tags_down = product.tags | join: '|' | downcase
+  if condition_raw contains 'new' or tags_down contains 'new with tags'
+    assign item_condition = 'https://schema.org/NewCondition'
+    assign condition_label = 'New with tags'
+  elsif condition_raw contains 'refurb'
+    assign item_condition = 'https://schema.org/RefurbishedCondition'
+    assign condition_label = 'Refurbished'
+  else
+    assign item_condition = 'https://schema.org/UsedCondition'
+    assign condition_label = 'Preloved'
+  endif
+
+  assign size_text = ''
+  assign size_mf = product.metafields.custom.size.value
+  if size_mf != blank
+    assign size_text = size_mf | join: ' / '
+    assign first_char = size_text | slice: 0
+    if size_text contains '"'
+      assign size_text = size_text | append: ' waist'
+    elsif '0123456789' contains first_char
+      assign size_text = 'UK ' | append: size_text
+    endif
+  endif
+  assign shoe_size = product.metafields.custom.shoe_size.value
+  if shoe_size != blank
+    assign size_text = shoe_size
+  endif
+
+  assign colour_text = ''
+  for c in product.metafields.shopify['color-pattern'].value
+    assign c_label = c.label.value | default: c.label
+    if colour_text == ''
+      assign colour_text = c_label
+    else
+      assign colour_text = colour_text | append: ' / ' | append: c_label
+    endif
+  endfor
+  assign colour_text = colour_text | replace: 'Gray', 'Grey' | replace: 'Multicolor', 'Multicolour'
+
+  assign product_url = request.origin | append: product.url
+  assign description = product.description | strip_html | strip_newlines | strip | truncate: 4900
+-%}
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": {{ product_url | append: '#product' | json }},
+  "name": {{ product.title | json }},
+  "url": {{ product_url | json }},
+  {%- if description != blank %}
+  "description": {{ description | json }},
+  {%- endif %}
+  {%- if product.media.size > 0 %}
+  "image": [
+    {%- for media in product.media limit: 6 -%}
+      {%- if media.preview_image -%}
+        {{ media.preview_image | image_url: width: 1200 | prepend: 'https:' | json }}{% unless forloop.last %},{% endunless %}
+      {%- endif -%}
+    {%- endfor -%}
+  ],
+  {%- endif %}
+  "brand": { "@type": "Brand", "name": {{ product.vendor | json }} },
+  {%- if product.category %}
+  "category": {{ product.category.name | json }},
+  {%- endif %}
+  {%- if colour_text != blank %}
+  "color": {{ colour_text | json }},
+  {%- endif %}
+  {%- if size_text != blank %}
+  "size": {{ size_text | json }},
+  {%- endif %}
+  "itemCondition": {{ item_condition | json }},
+  "audience": { "@type": "PeopleAudience", "suggestedGender": "female", "suggestedMinAge": 13 },
+  "additionalProperty": [
+    { "@type": "PropertyValue", "name": "Condition", "value": {{ condition_label | json }} }
+    {%- if size_text != blank -%},
+    { "@type": "PropertyValue", "name": "Size", "value": {{ size_text | json }} }
+    {%- endif -%}
+    {%- if colour_text != blank -%},
+    { "@type": "PropertyValue", "name": "Colour", "value": {{ colour_text | json }} }
+    {%- endif %}
+  ],
+  {%- assign first_sku = product.selected_or_first_available_variant.sku -%}
+  {%- if first_sku != blank %}
+  "sku": {{ first_sku | json }},
+  {%- endif %}
+  "offers": [
+    {%- for variant in product.variants -%}
+    {
+      "@type": "Offer",
+      "url": {{ product_url | append: '?variant=' | append: variant.id | json }},
+      {%- if variant.sku != blank %}
+      "sku": {{ variant.sku | json }},
+      {%- endif %}
+      "price": {{ variant.price | divided_by: 100.0 | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "availability": "{% if variant.available %}https://schema.org/InStock{% else %}https://schema.org/SoldOut{% endif %}",
+      "itemCondition": {{ item_condition | json }},
+      "seller": { "@type": "Organization", "name": {{ shop.name | json }} }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
